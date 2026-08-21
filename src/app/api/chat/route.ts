@@ -10,8 +10,8 @@ YOUR ROLE: Help recruiters, engineering leaders, clients, and visitors learn abo
 
 STRICT SCOPE & RULES:
 1. ONLY answer questions related to Aman Dubey, his portfolio, projects, skills, education, certifications, milestones, and contact info.
-2. If the user asks anything outside this scope (e.g. general coding help, recipes, news, unrelated subjects), politely reply:
-   "I am specialized exclusively as Aman Dubey's portfolio assistant. I can help you with details about his projects, technical skills, SIH hackathon experience, or how to get in touch with him!"
+2. If the user asks anything outside this scope (e.g. general coding help, celebrity info, recipes, weather, news, unrelated subjects), politely reply:
+   "I am specialized exclusively as Aman Dubey's portfolio assistant. I can help you with details about his full-stack projects (like Reader's HUB and Dentiva AI), technical skills (Next.js, TypeScript, React, Node.js), algorithmic problem solving (250+ streak), or how to get in touch with him!"
 3. NEVER invent or hallucinate skills, companies, experience, or fake metrics.
 4. Keep answers concise, highly professional, polite, and well-structured using markdown bullets and bold text.
 5. Provide relevant links (e.g., [Reader's HUB](https://reader-hub-library.vercel.app/), [GitHub](https://github.com/amandubey923), [LinkedIn](https://www.linkedin.com/in/aman-kr-dubey)) when discussing projects or contact.
@@ -34,10 +34,10 @@ AMAN DUBEY'S VERIFIED PORTFOLIO DATA:
   * GeeksforGeeks: ${PERSONAL_INFO.socials.geeksforgeeks}
 
 CORE STATS & MILESTONES:
-- 10+ Shipped Real-World Web Applications
+- 8+ Shipped Real-World Web Applications
 - 500+ Algorithmic Problems Solved (LeetCode & GFG)
-- 250+ Days LeetCode Problem Solving Consistency Badge
-- Smart India Hackathon (SIH 2023 & 2024) National Finalist
+- 250+ Days LeetCode Consistency Badge
+- Smart India Hackathon (SIH) College Team Participant
 - Core Stack: MERN & Next.js App Router, TypeScript, React.js, Node.js
 
 TECHNICAL SKILLS (EXACT VERIFIED STACK):
@@ -133,22 +133,39 @@ export async function POST(req: Request) {
     const lower = message.toLowerCase().trim();
     let fallbackReply = "";
 
-    if (lower.includes("who is") || lower.includes("about") || lower.includes("tell me about") || lower.includes("introduce")) {
-      fallbackReply = `**Aman Dubey** is a **Full-Stack Developer & Software Engineer** based in India. He specializes in building scalable web applications with **React.js, Next.js (App Router), Node.js, Express.js, TypeScript, and MongoDB/SQL**.\n\nHe is an **SIH National Finalist**, has shipped **10+ real-world production projects**, and maintains a **250+ days unbroken LeetCode streak**. You can view his resume at [Resume](${PERSONAL_INFO.resumeUrl}) or reach out via [Email](mailto:${PERSONAL_INFO.email}).`;
+    // Restrict off-topic questions in fallback engine
+    if (
+      lower.includes("weather") ||
+      lower.includes("virat") ||
+      lower.includes("kohli") ||
+      lower.includes("recipe") ||
+      lower.includes("python program") ||
+      lower.includes("write a script") ||
+      lower.includes("cricket") ||
+      lower.includes("football") ||
+      lower.includes("capital of") ||
+      lower.includes("president") ||
+      lower.includes("prime minister")
+    ) {
+      fallbackReply = `I am specialized exclusively as **Aman Dubey's Portfolio Assistant**. I can help you with details about his **full-stack projects** (like **Reader's HUB** and **Dentiva AI**), **technical skills** (Next.js, React, TypeScript, Node.js), **250+ days DSA streak**, or **how to contact him**!`;
+    } else if (lower.includes("who is") || lower.includes("about") || lower.includes("tell me about aman") || lower.includes("introduce")) {
+      fallbackReply = `**Aman Dubey** is a **Full-Stack Developer & Software Engineer** based in India. He builds responsive web applications with **React.js, Next.js (App Router), Node.js, Express.js, TypeScript, and MongoDB/PostgreSQL**.\n\nHe has shipped **8+ web applications**, participated in the **Smart India Hackathon**, and maintains an active **250+ days consistency streak on LeetCode**. You can inspect his [Developer Dossier](/dossier) or reach out via [Email](mailto:${PERSONAL_INFO.email}).`;
     } else if (lower.includes("project") || lower.includes("work") || lower.includes("app") || lower.includes("built")) {
-      fallbackReply = `Here are Aman's top projects:\n\n1. **[Reader's HUB](https://reader-hub-library.vercel.app/)** (#1 Featured) — Next-Gen Digital Library & Reading Ecosystem with dynamic theme customization and Convex/Node backend.\n2. **[Transaction-Validator](https://transaction-validator-aman.vercel.app)** — High-throughput CSV stream parser and financial anomaly detection engine.\n3. **[Dentiva AI](https://dentiva-ai-aman.netlify.app)** — Conversational voice-enabled healthcare dental assistant and appointment scheduler.\n4. **[Productify SaaS](https://frontend-productify.vercel.app)** — Digital creator asset hosting & commerce platform.\n5. **[AI Image Generator](https://image-generator-studio.netlify.app)** — Neural image transformation SaaS platform.\n\nYou can inspect all 10 projects with full live demos in the **Projects** section!`;
+      fallbackReply = `Here are Aman's top featured projects:\n\n1. **[Reader's HUB](https://reader-hub-library.vercel.app/)** ⭐ (#1 Featured) — Modern Digital Library Platform with catalog indexing, dynamic theme switching, and responsive design.\n2. **[Dentiva AI](https://dentiva-ai-aman.netlify.app)** — AI-powered healthcare platform with conversational voice consultation and doctor appointment scheduling.\n3. **[Transaction-Validator](https://transaction-validator-aman.vercel.app)** — CSV dataset validation tool with anomaly detection and clean export.\n4. **[AI Fitness Platform](https://ai-fitness-aman.netlify.app)** — Dynamic workout and dietary regimen generator.\n5. **[Video Calling Platform](https://video-calling-interview-plattform.netlify.app)** — Real-time WebRTC peer-to-peer technical interview workspace.\n\nYou can inspect all projects in the **Projects** section!`;
     } else if (lower.includes("skill") || lower.includes("tech") || lower.includes("stack") || lower.includes("language")) {
-      fallbackReply = `Aman's core technical arsenal includes:\n\n* **Languages:** C++, JavaScript (ES6+), TypeScript\n* **Frameworks & Libraries:** React.js, Next.js (App Router), Node.js, Express.js, Tailwind CSS\n* **Databases:** MongoDB, PostgreSQL, Firebase, Convex, Neon (SQL)\n* **AI & Integrations:** Gemini AI, Vapi AI, Prisma ORM, Clerk Auth\n* **Tools & Platforms:** Git, GitHub, Vercel, Netlify, Render, Railway, VS Code\n* **Core CS:** Data Structures & Algorithms, OOP, Operating Systems, Web Development`;
+      fallbackReply = `Aman's core technical arsenal includes:\n\n* **Languages:** C++, JavaScript (ES6+), TypeScript, HTML5 & CSS3\n* **Frontend & UI:** React.js, Next.js (App Router & SSR), Tailwind CSS\n* **Backend & APIs:** Node.js, Express.js, WebSockets\n* **Databases:** MongoDB, PostgreSQL, SQL\n* **AI & Integrations:** Gemini API, WebRTC\n* **Tools & Deployment:** Git, GitHub, Vercel, Netlify, VS Code, Postman\n* **Core CS:** Data Structures & Algorithms (250+ days), OOP, DBMS`;
     } else if (lower.includes("contact") || lower.includes("email") || lower.includes("phone") || lower.includes("hire") || lower.includes("reach") || lower.includes("message")) {
       fallbackReply = `You can connect with Aman Dubey directly:\n\n* 📧 **Email:** [${PERSONAL_INFO.email}](mailto:${PERSONAL_INFO.email})\n* 📞 **Phone:** ${PERSONAL_INFO.phone}\n* 💼 **LinkedIn:** [linkedin.com/in/aman-kr-dubey](${PERSONAL_INFO.socials.linkedin})\n* 🐙 **GitHub:** [github.com/amandubey923](${PERSONAL_INFO.socials.github})\n* 📝 **Contact Form:** Use the interactive form at the bottom of the page!`;
     } else if (lower.includes("hackathon") || lower.includes("sih") || lower.includes("achievement") || lower.includes("experience")) {
-      fallbackReply = `Aman is a **Smart India Hackathon (SIH 2023 & 2024) National Finalist**, where he designed technical system flows and architected prototypes under high-pressure real-world constraints. He has also built & deployed **10+ production web applications** with 100% uptime and holds a **250+ Days LeetCode Consistency Badge**.`;
+      fallbackReply = `Aman participated in the **Smart India Hackathon (SIH)** where his college team developed full-stack web prototypes and presented structured technical solutions under tight deadlines. He has deployed **8+ web applications** across Vercel and Netlify and holds a **250+ Days LeetCode Consistency Badge**.`;
     } else if (lower.includes("certif") || lower.includes("award") || lower.includes("credential")) {
-      fallbackReply = `Aman's verified certifications include:\n\n* **LeetCode 100 Days Badge** (Consistent algorithmic problem solving)\n* **Next.js – Skill Up Certification** (GeeksforGeeks)\n* **Smart India Hackathon Recognition** (Ministry of Education / SIH)\n* **MongoDB Transactions Certification** (MongoDB University)\n* **MERN Stack Summer Training** (ASB Academy / CGC Landran)\n* **AWS Academy Graduate – Cloud Operations** (AWS)`;
+      fallbackReply = `Aman's verified certifications include:\n\n* **LeetCode 100 Days Badge** (Algorithmic problem solving consistency)\n* **Next.js – Skill Up Certification** (GeeksforGeeks)\n* **Smart India Hackathon Participation** (Ministry of Education / SIH)\n* **MongoDB Transactions Certification** (MongoDB University)\n* **MERN Stack Summer Training** (ASB Academy / CGC Landran)\n* **AWS Academy Graduate – Cloud Operations** (AWS)`;
     } else if (lower.includes("reader") || lower.includes("hub") || lower.includes("library")) {
       fallbackReply = `**Reader's HUB** is Aman's **#1 featured project**! It is a modern digital library platform engineered for discovering, exploring, reviewing, and managing world literature. It features real-time catalog search, an interactive multi-theme customizer, and full responsive design.\n\n🔗 **Live Demo:** [reader-hub-library.vercel.app](https://reader-hub-library.vercel.app/)\n📂 **GitHub:** [ReadersHUB-A-Digital-Library-Platform](https://github.com/amandubey923/ReadersHUB-A-Digital-Library-Platform)`;
+    } else if (lower.includes("dentiva")) {
+      fallbackReply = `**Dentiva AI** is an intelligent healthcare platform that integrates conversational voice AI for triage and dental care guidance, paired with appointment scheduling.\n\n🔗 **Live Demo:** [dentiva-ai-aman.netlify.app](https://dentiva-ai-aman.netlify.app)\n📂 **GitHub:** [dentiva-ai](https://github.com/amandubey923/dentiva-ai)`;
     } else {
-      fallbackReply = `Hello! I am **Aman AI**, Aman Dubey's portfolio assistant. I can answer anything about Aman's background, his **10+ full-stack projects** (like **Reader's HUB** and **Transaction Validator**), **technical skills**, **SIH hackathon milestones**, or **contact info**.\n\nFeel free to ask questions like:\n* *"What technologies does Aman use?"*\n* *"Tell me about Reader's HUB"* \n* *"How can I contact Aman?"*`;
+      fallbackReply = `Hello! I am **Aman AI**, Aman Dubey's portfolio assistant. I can answer questions about Aman's background, his **projects** (like **Reader's HUB** and **Dentiva AI**), **technical skills**, **hackathon experiences**, or **how to contact him**.\n\nFeel free to ask questions like:\n* *"What technologies does Aman use?"*\n* *"Tell me about Reader's HUB"* \n* *"How can I contact Aman?"*`;
     }
 
     return Response.json({ reply: fallbackReply });
@@ -160,4 +177,3 @@ export async function POST(req: Request) {
     );
   }
 }
-

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FolderGit2, Search, Sparkles } from "lucide-react";
+import { FolderGit2, Search, Sparkles, ChevronDown, ChevronUp } from "lucide-react";
 import { PROJECTS_DATA, Project } from "@/data/portfolioData";
 import ProjectCard3D from "./ProjectCard3D";
 import ProjectModal from "./ProjectModal";
@@ -10,6 +10,7 @@ import ProjectModal from "./ProjectModal";
 export default function ProjectsSection() {
   const [activeCategory, setActiveCategory] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [showAll, setShowAll] = useState<boolean>(false);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const categories = ["All", "Full Stack", "AI & ML", "Frontend & Tools"];
@@ -25,6 +26,12 @@ export default function ProjectsSection() {
       );
     return matchesCategory && matchesSearch;
   });
+
+  // Display curated top featured projects by default when in "All" view with no active search
+  const isDefaultView = activeCategory === "All" && !searchQuery.trim();
+  const displayedProjects = isDefaultView && !showAll
+    ? filteredProjects.filter((p) => p.featured)
+    : filteredProjects;
 
   return (
     <section
@@ -43,12 +50,11 @@ export default function ProjectsSection() {
         </div>
 
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
-          Projects & <span className="text-gradient-primary">Engineered Systems</span>
+          Projects & <span className="text-gradient-primary">Engineered Applications</span>
         </h2>
 
-        <p className="max-w-2xl text-muted-foreground text-base sm:text-lg leading-relaxed">
-          Production full-stack applications, real-time communication workspaces,
-          and intelligent AI platforms built with modern web architectures.
+        <p className="max-w-2xl text-foreground/75 text-base sm:text-lg leading-relaxed">
+          Full-stack web applications, real-time communication tools, and AI-enabled platforms built with clean code and responsive UI.
         </p>
       </div>
 
@@ -61,11 +67,14 @@ export default function ProjectsSection() {
             return (
               <button
                 key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all duration-200 ${
+                onClick={() => {
+                  setActiveCategory(cat);
+                  setShowAll(true); // Automatically show all matching projects when filtering by category
+                }}
+                className={`px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all duration-200 cursor-pointer ${
                   isSelected
                     ? "btn-primary-gradient shadow-[0_0_20px_var(--glow-primary)] scale-105"
-                    : "border border-white/10 bg-card/60 text-muted-foreground hover:text-foreground hover:border-primary/40"
+                    : "border border-foreground/10 bg-card text-foreground/75 hover:text-foreground hover:border-primary/40"
                 }`}
               >
                 {cat}
@@ -82,7 +91,7 @@ export default function ProjectsSection() {
             placeholder="Search by name, tech or feature..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-white/10 bg-card/60 text-xs text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:shadow-[0_0_15px_var(--glow-primary)] transition"
+            className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-foreground/10 bg-card text-xs text-foreground placeholder:text-foreground/50 focus:outline-none focus:border-primary focus:shadow-[0_0_15px_var(--glow-primary)] transition"
           />
         </div>
       </div>
@@ -90,7 +99,7 @@ export default function ProjectsSection() {
       {/* Projects Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
         <AnimatePresence mode="popLayout">
-          {filteredProjects.map((project) => (
+          {displayedProjects.map((project) => (
             <motion.div
               layout
               key={project.id}
@@ -108,17 +117,34 @@ export default function ProjectsSection() {
         </AnimatePresence>
       </div>
 
+      {/* View All Projects Toggle for Curation */}
+      {isDefaultView && (
+        <div className="mt-12 text-center relative z-10">
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="btn-secondary-glass inline-flex items-center gap-2 px-6 py-3 rounded-2xl text-xs font-bold text-foreground hover:text-primary transition shadow-md cursor-pointer"
+          >
+            <span>{showAll ? "Show Top Featured Only" : `View All Projects (${PROJECTS_DATA.length})`}</span>
+            {showAll ? (
+              <ChevronUp className="w-4 h-4 text-primary" />
+            ) : (
+              <ChevronDown className="w-4 h-4 text-primary" />
+            )}
+          </button>
+        </div>
+      )}
+
       {filteredProjects.length === 0 && (
         <div className="py-20 text-center space-y-2 relative z-10">
-          <p className="text-muted-foreground text-sm">
-            No projects matched your criteria.
+          <p className="text-foreground/60 text-sm">
+            No projects matched your search criteria.
           </p>
           <button
             onClick={() => {
               setActiveCategory("All");
               setSearchQuery("");
             }}
-            className="text-xs text-primary font-bold hover:underline"
+            className="text-xs text-primary font-bold hover:underline cursor-pointer"
           >
             Reset Filters
           </button>
