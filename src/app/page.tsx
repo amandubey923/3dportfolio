@@ -3,7 +3,6 @@ import AboutSection from "@/components/about/AboutSection";
 import SkillsSection from "@/components/skills/SkillsSection";
 import ProjectsSection from "@/components/projects/ProjectsSection";
 import ExperienceSection from "@/components/experience/ExperienceSection";
-import CertificationsSection from "@/components/certifications/CertificationsSection";
 import ContactSection from "@/components/contact/ContactSection";
 
 export default function HomePage() {
@@ -14,9 +13,7 @@ export default function HomePage() {
       <SkillsSection />
       <ProjectsSection />
       <ExperienceSection />
-      <CertificationsSection />
       <ContactSection />
     </div>
   );
 }
-

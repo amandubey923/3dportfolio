@@ -155,7 +155,7 @@ export default function AboutSection() {
                 Clean Architecture
               </h4>
               <p className="text-xs text-muted-foreground leading-relaxed">
-                Component-driven UI, stream processors, ACID transactions, and decoupled microservices.
+                Component-driven UI, stream processors, robust database schemas, and modular RESTful APIs.
               </p>
             </div>
 

@@ -15,6 +15,7 @@ import {
   CheckCircle2,
   Terminal,
   Sparkles,
+  AlertCircle,
 } from "lucide-react";
 import { PERSONAL_INFO } from "@/data/portfolioData";
 import ToastContainer, { ToastMessage } from "@/components/ui/Toast";
@@ -23,10 +24,12 @@ export default function ContactSection() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    subject: "",
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
@@ -36,7 +39,7 @@ export default function ContactSection() {
     setToasts((prev) => [...prev, { id, type, text }]);
     setTimeout(() => {
       setToasts((prev) => prev.filter((t) => t.id !== id));
-    }, 4000);
+    }, 4500);
   };
 
   const handleCopyEmail = () => {
@@ -55,9 +58,16 @@ export default function ContactSection() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) return;
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      addToast("error", "Please fill in all required fields.");
+      return;
+    }
+
+    if (isSubmitting) return; // Prevent duplicate submission
 
     setIsSubmitting(true);
+    setErrorMessage(null);
+
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -65,26 +75,32 @@ export default function ContactSection() {
         body: JSON.stringify(formData),
       });
 
-      if (res.ok) {
+      const data = await res.json();
+
+      if (res.ok && data.success) {
         setIsSubmitted(true);
-        addToast("success", "Message dispatched successfully!");
-        setFormData({ name: "", email: "", message: "" });
+        addToast("success", "Message delivered successfully!");
+        setFormData({ name: "", email: "", subject: "", message: "" });
 
         // Celebration confetti
         try {
           confetti({
-            particleCount: 80,
-            spread: 70,
+            particleCount: 90,
+            spread: 75,
             origin: { y: 0.6 },
           });
         } catch {
           // ignore
         }
       } else {
-        addToast("error", "Could not send message. Please email directly.");
+        const errorText = "Something went wrong while sending your message. Please try again or use email directly.";
+        setErrorMessage(errorText);
+        addToast("error", errorText);
       }
     } catch {
-      addToast("error", "Network error. Please try again or copy email directly.");
+      const errorText = "Something went wrong while sending your message. Please try again or use email directly.";
+      setErrorMessage(errorText);
+      addToast("error", errorText);
     } finally {
       setIsSubmitting(false);
     }
@@ -109,7 +125,7 @@ export default function ContactSection() {
       <div className="mb-20 space-y-3 relative z-10 text-center sm:text-left">
         <div className="section-index-badge">
           <Terminal className="w-3.5 h-3.5" />
-          <span>06 / Direct Communications</span>
+          <span>05 / Direct Communications</span>
         </div>
 
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
@@ -277,10 +293,10 @@ export default function ContactSection() {
                   <CheckCircle2 className="w-6 h-6" />
                 </div>
                 <h4 className="text-lg font-bold text-foreground">
-                  Transmission Successful
+                  ✓ Message Delivered
                 </h4>
                 <p className="text-xs sm:text-sm text-muted-foreground max-w-sm mx-auto">
-                  Thank you for reaching out. I will respond to your inquiry promptly.
+                  Thanks — your message has been sent successfully. I will respond to your inquiry promptly.
                 </p>
                 <button
                   onClick={() => setIsSubmitted(false)}
@@ -291,10 +307,17 @@ export default function ContactSection() {
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
+                {errorMessage && (
+                  <div className="p-3.5 rounded-xl border border-rose-500/30 bg-rose-500/10 text-rose-300 text-xs flex items-center gap-2.5">
+                    <AlertCircle className="w-4 h-4 shrink-0 text-rose-400" />
+                    <span>{errorMessage}</span>
+                  </div>
+                )}
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div className="space-y-2">
                     <label className="text-xs font-mono font-bold text-muted-foreground uppercase tracking-wider">
-                      Your Full Name
+                      Your Full Name <span className="text-primary">*</span>
                     </label>
                     <input
                       required
@@ -310,7 +333,7 @@ export default function ContactSection() {
 
                   <div className="space-y-2">
                     <label className="text-xs font-mono font-bold text-muted-foreground uppercase tracking-wider">
-                      Your Email Address
+                      Your Email Address <span className="text-primary">*</span>
                     </label>
                     <input
                       required
@@ -327,7 +350,22 @@ export default function ContactSection() {
 
                 <div className="space-y-2">
                   <label className="text-xs font-mono font-bold text-muted-foreground uppercase tracking-wider">
-                    Message / Opportunity Scope
+                    Subject / Topic <span className="text-muted-foreground/60 text-[10px] lowercase font-normal">(optional)</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="e.g. Engineering Role / Full-Stack Project Inquiry"
+                    value={formData.subject}
+                    onChange={(e) =>
+                      setFormData({ ...formData, subject: e.target.value })
+                    }
+                    className="w-full px-4 py-3 rounded-2xl border border-white/10 bg-background/60 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:shadow-[0_0_20px_var(--glow-primary)] transition"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-xs font-mono font-bold text-muted-foreground uppercase tracking-wider">
+                    Message / Opportunity Scope <span className="text-primary">*</span>
                   </label>
                   <textarea
                     required
@@ -344,7 +382,7 @@ export default function ContactSection() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="btn-primary-gradient w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-2xl font-bold text-sm shadow-xl active:scale-95 disabled:opacity-50"
+                  className="btn-primary-gradient w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-2xl font-bold text-sm shadow-xl active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Send className="w-4 h-4" />
                   <span>{isSubmitting ? "Transmitting..." : "Send Message"}</span>

@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, FileText, Palette, Sun, Moon, ArrowRight, Github, Linkedin, Mail } from "lucide-react";
 import { PERSONAL_INFO } from "@/data/portfolioData";
@@ -60,9 +61,11 @@ export default function MobileMenu({
               {/* Nav Links */}
               <nav className="py-5 flex flex-col gap-1.5">
                 {navItems.map((item) => {
-                  const isActive = activeSection === item.href.replace("#", "");
+                  const isDossier = item.href === "/dossier";
+                  const sectionId = item.href.replace("/#", "").replace("#", "");
+                  const isActive = isDossier ? false : activeSection === sectionId;
                   return (
-                    <a
+                    <Link
                       key={item.label}
                       href={item.href}
                       onClick={onClose}
@@ -74,7 +77,7 @@ export default function MobileMenu({
                     >
                       <span>{item.label}</span>
                       <ArrowRight className="w-3.5 h-3.5 opacity-40" />
-                    </a>
+                    </Link>
                   );
                 })}
               </nav>

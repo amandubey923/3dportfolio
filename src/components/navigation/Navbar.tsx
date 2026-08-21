@@ -2,6 +2,8 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   Menu,
   Palette,
@@ -18,15 +20,17 @@ import CommandMenu from "./CommandMenu";
 import MobileMenu from "./MobileMenu";
 
 const NAV_ITEMS = [
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "Experience", href: "#experience" },
-  { label: "Certificates", href: "#certifications" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/#hero" },
+  { label: "About", href: "/#about" },
+  { label: "Skills", href: "/#skills" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Experience", href: "/#experience" },
+  { label: "Dossier", href: "/dossier" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
   const [isThemeDropdownOpen, setIsThemeDropdownOpen] = useState(false);
@@ -43,7 +47,7 @@ export default function Navbar() {
         setIsScrolled(false);
       }
 
-      const sections = ["hero", "about", "skills", "projects", "experience", "certifications", "contact"];
+      const sections = ["hero", "about", "skills", "projects", "experience", "contact"];
       const scrollPosition = window.scrollY + 220;
 
       for (const section of sections) {
@@ -79,20 +83,24 @@ export default function Navbar() {
             }`}
           >
             {/* Left: Brand Identity with AD Monogram */}
-            <a
-              href="#hero"
+            <Link
+              href="/#hero"
               className="focus:outline-none"
             >
               <ADLogo size="sm" showWordmark={true} />
-            </a>
+            </Link>
 
             {/* Middle: Desktop Navigation Links */}
             <div className="hidden lg:flex items-center gap-1 p-1 rounded-xl bg-background/50 border border-white/5">
               {NAV_ITEMS.map((item) => {
-                const sectionId = item.href.replace("#", "");
-                const isActive = activeSection === sectionId;
+                const isDossier = item.href === "/dossier";
+                const isDossierActive = isDossier && pathname === "/dossier";
+                const sectionId = item.href.replace("/#", "").replace("#", "");
+                const isSectionActive = pathname === "/" && activeSection === sectionId;
+                const isActive = isDossierActive || isSectionActive;
+
                 return (
-                  <a
+                  <Link
                     key={item.label}
                     href={item.href}
                     className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all duration-150 ${
@@ -102,7 +110,7 @@ export default function Navbar() {
                     }`}
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 );
               })}
             </div>

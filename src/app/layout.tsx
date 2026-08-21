@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/context/ThemeContext";
 import Navbar from "@/components/navigation/Navbar";
 import Footer from "@/components/layout/Footer";
 import CustomCursor from "@/components/ui/CustomCursor";
+import PortfolioChatbot from "@/components/chat/PortfolioChatbot";
 import { PERSONAL_INFO } from "@/data/portfolioData";
 
 export const viewport: Viewport = {
@@ -76,6 +77,7 @@ export default function RootLayout({
           <Navbar />
           <main className="relative z-10">{children}</main>
           <Footer />
+          <PortfolioChatbot />
         </ThemeProvider>
       </body>
     </html>

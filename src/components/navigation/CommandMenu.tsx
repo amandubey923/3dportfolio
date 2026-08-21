@@ -6,7 +6,6 @@ import {
   Search,
   FolderGit2,
   Cpu,
-  Award,
   Terminal,
   FileText,
   Mail,
@@ -76,11 +75,11 @@ export default function CommandMenu({
       },
     },
     {
-      label: "Verified Certifications Vault",
+      label: "Open Developer Dossier",
       category: "Navigation",
-      icon: Award,
+      icon: FileText,
       action: () => {
-        document.getElementById("certifications")?.scrollIntoView({ behavior: "smooth" });
+        window.location.href = "/dossier";
         onClose();
       },
     },

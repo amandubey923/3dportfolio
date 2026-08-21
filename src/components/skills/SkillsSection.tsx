@@ -11,12 +11,44 @@ import {
   Cpu,
   Search,
   Sparkles,
+  ArrowUpRight,
 } from "lucide-react";
 import { SKILL_CATEGORIES } from "@/data/portfolioData";
+import Link from "next/link";
+
+// Verified Skill-to-Project Connection Map
+const SKILL_PROJECT_MAP: Record<string, string> = {
+  "React.js": "Reader's HUB, Dentiva AI, AI Fitness Platform",
+  "Next.js": "Reader's HUB, Transaction-Validator, Productify SaaS",
+  "TypeScript": "Reader's HUB, Transaction-Validator, 3D Portfolio",
+  "JavaScript": "All 10 Projects, LeetCode DSA",
+  "C++": "LeetCode 250+ Streak, Algorithmic Problem Solving",
+  "Node.js": "Productify SaaS, AI Image Studio, Reader's HUB",
+  "Express.js": "Productify SaaS, AI Image Studio, Book Store App",
+  "Tailwind CSS": "Reader's HUB, Transaction-Validator, Dentiva AI",
+  "MongoDB": "Productify SaaS, Book Store App",
+  "PostgreSQL": "Full-Stack Relational Applications",
+  "Firebase": "Authentication & Realtime Cloud Services",
+  "Convex": "Reader's HUB Realtime Data Sync",
+  "Neon (SQL)": "Serverless Postgres Deployments",
+  "Gemini AI": "AI Fitness Platform, Portfolio Chatbot",
+  "Vapi AI": "Dentiva AI Voice Assistant Engine",
+  "Prisma ORM": "Type-Safe Database Schema Client",
+  "Clerk Auth": "Secured Identity & User Management",
+  "Git": "Version Control across all repositories",
+  "GitHub": "Collaboration & 10+ Public Projects",
+  "Vercel": "Reader's HUB, Transaction-Validator, Productify",
+  "Netlify": "Dentiva AI, AI Fitness, Video Interview",
+  "Data Structures & Algorithms": "250+ Days Streak, 500+ Problems Solved",
+  "OOP": "Clean Architecture & Design Patterns",
+  "Operating Systems": "Process Concurrency & Memory Management",
+  "Web Development": "10+ Production Deployments & Responsive UI",
+};
 
 export default function SkillsSection() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
 
   const categories = ["All", ...SKILL_CATEGORIES.map((c) => c.title)];
 
@@ -97,13 +129,12 @@ export default function SkillsSection() {
         </h2>
 
         <p className="max-w-2xl text-muted-foreground text-base sm:text-lg leading-relaxed">
-          Production-proven technologies, frameworks, and engineering methodologies
-          utilized across high-throughput web applications and AI services.
+          Production-proven technologies and frameworks grounded in real application codebases. Hover any skill chip to inspect where it is deployed.
         </p>
       </div>
 
       {/* Filter and Search Controls */}
-      <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-12 relative z-10">
+      <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-8 relative z-10">
         {/* Category Pills with Gradient Active Glow */}
         <div className="flex items-center gap-2 overflow-x-auto pb-2 w-full md:w-auto no-scrollbar">
           {categories.map((cat) => {
@@ -112,7 +143,7 @@ export default function SkillsSection() {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all duration-200 ${
+                className={`px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all duration-200 cursor-pointer ${
                   isSelected
                     ? "btn-primary-gradient shadow-[0_0_20px_var(--glow-primary)] scale-105"
                     : "border border-white/10 bg-card/60 text-muted-foreground hover:text-foreground hover:border-primary/40"
@@ -136,6 +167,28 @@ export default function SkillsSection() {
           />
         </div>
       </div>
+
+      {/* Active Skill Connection Banner */}
+      {hoveredSkill && SKILL_PROJECT_MAP[hoveredSkill] && (
+        <motion.div
+          initial={{ opacity: 0, y: -6 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-8 p-3.5 rounded-2xl border border-primary/40 bg-primary/10 backdrop-blur-xl flex items-center justify-between gap-3 text-xs font-mono relative z-10 shadow-lg"
+        >
+          <div className="flex items-center gap-2.5">
+            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+            <span className="text-primary font-bold">{hoveredSkill}:</span>
+            <span className="text-foreground/90">Applied in {SKILL_PROJECT_MAP[hoveredSkill]}</span>
+          </div>
+          <Link
+            href="/#projects"
+            className="hidden sm:inline-flex items-center gap-1 text-primary hover:underline font-bold"
+          >
+            <span>View Projects</span>
+            <ArrowUpRight className="w-3 h-3" />
+          </Link>
+        </motion.div>
+      )}
 
       {/* Interactive Category Grid with Gradient Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
@@ -166,12 +219,14 @@ export default function SkillsSection() {
                   </div>
                 </div>
 
-                {/* Colorful Tech Stack Badges */}
+                {/* Tech Stack Badges */}
                 <div className="flex flex-wrap gap-2 pt-1">
                   {category.skills.map((skill) => (
                     <div
                       key={skill.name}
-                      className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 hover:scale-105 ${getSkillBadgeClass(skill.name)}`}
+                      onMouseEnter={() => setHoveredSkill(skill.name)}
+                      onMouseLeave={() => setHoveredSkill(null)}
+                      className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 hover:scale-105 cursor-pointer ${getSkillBadgeClass(skill.name)}`}
                     >
                       <span>{skill.name}</span>
                       {skill.tag && (
