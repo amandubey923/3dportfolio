@@ -146,7 +146,7 @@ export default function SkillsSection() {
                 className={`px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all duration-200 cursor-pointer ${
                   isSelected
                     ? "btn-primary-gradient shadow-[0_0_20px_var(--glow-primary)] scale-105"
-                    : "border border-white/10 bg-card/60 text-muted-foreground hover:text-foreground hover:border-primary/40"
+                    : "border border-foreground/10 bg-card text-foreground/75 hover:text-foreground hover:border-primary/40"
                 }`}
               >
                 {cat}
@@ -163,7 +163,7 @@ export default function SkillsSection() {
             placeholder="Search technology..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-white/10 bg-card/60 text-xs text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:shadow-[0_0_15px_var(--glow-primary)] transition"
+            className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-foreground/10 bg-card text-xs text-foreground placeholder:text-foreground/50 focus:outline-none focus:border-primary focus:shadow-[0_0_15px_var(--glow-primary)] transition"
           />
         </div>
       </div>
@@ -178,7 +178,7 @@ export default function SkillsSection() {
           <div className="flex items-center gap-2.5">
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
             <span className="text-primary font-bold">{hoveredSkill}:</span>
-            <span className="text-foreground/90">Applied in {SKILL_PROJECT_MAP[hoveredSkill]}</span>
+            <span className="text-foreground/90 font-sans">Applied in {SKILL_PROJECT_MAP[hoveredSkill]}</span>
           </div>
           <Link
             href="/#projects"
@@ -205,15 +205,15 @@ export default function SkillsSection() {
             >
               <div>
                 {/* Card Header with Glowing Icon */}
-                <div className="flex items-center gap-3.5 pb-4 mb-4 border-b border-white/10">
-                  <div className="p-3 rounded-2xl bg-white/[0.05] text-primary border border-white/10 group-hover:scale-110 group-hover:shadow-[0_0_20px_var(--glow-primary)] transition duration-300">
+                <div className="flex items-center gap-3.5 pb-4 mb-4 border-b border-foreground/10">
+                  <div className="p-3 rounded-2xl bg-foreground/[0.04] text-primary border border-foreground/10 group-hover:scale-110 group-hover:shadow-[0_0_20px_var(--glow-primary)] transition duration-300">
                     {getCategoryIcon(category.icon)}
                   </div>
                   <div>
                     <h3 className="text-base font-bold text-foreground">
                       {category.title}
                     </h3>
-                    <p className="text-xs text-muted-foreground line-clamp-1">
+                    <p className="text-xs text-foreground/65 line-clamp-1 font-normal">
                       {category.description}
                     </p>
                   </div>
@@ -240,7 +240,7 @@ export default function SkillsSection() {
               </div>
 
               {/* Bottom Count */}
-              <div className="mt-6 pt-3 border-t border-white/10 flex items-center justify-between text-xs text-muted-foreground font-mono">
+              <div className="mt-6 pt-3 border-t border-foreground/10 flex items-center justify-between text-xs text-foreground/60 font-mono">
                 <span>{category.skills.length} Capabilities</span>
                 <Sparkles className="w-3.5 h-3.5 text-primary" />
               </div>

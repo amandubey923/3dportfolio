@@ -87,17 +87,17 @@ export default function AboutSection() {
               </div>
 
               {/* Context Quick Grid */}
-              <div className="p-4 rounded-xl border border-white/10 bg-white/[0.02] space-y-2">
+              <div className="p-4 rounded-xl border border-foreground/10 bg-foreground/[0.02] space-y-2">
                 <div className="flex items-center justify-between text-xs">
-                  <span className="text-muted-foreground font-medium">Location:</span>
+                  <span className="text-foreground/60 font-medium">Location:</span>
                   <span className="font-semibold text-foreground">{PERSONAL_INFO.location}</span>
                 </div>
                 <div className="flex items-center justify-between text-xs">
-                  <span className="text-muted-foreground font-medium">Specialization:</span>
+                  <span className="text-foreground/60 font-medium">Specialization:</span>
                   <span className="font-bold text-primary">Full-Stack & Next.js Systems</span>
                 </div>
                 <div className="flex items-center justify-between text-xs">
-                  <span className="text-muted-foreground font-medium">Core Focus:</span>
+                  <span className="text-foreground/60 font-medium">Core Focus:</span>
                   <span className="font-medium text-foreground">Clean Architecture & DSA</span>
                 </div>
               </div>

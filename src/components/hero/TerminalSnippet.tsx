@@ -15,27 +15,27 @@ export default function TerminalSnippet() {
   };
 
   return (
-    <div className="w-full max-w-lg rounded-xl border border-white/[0.08] bg-black/50 backdrop-blur-xl shadow-xl overflow-hidden font-mono text-xs">
+    <div className="w-full max-w-lg rounded-xl border border-foreground/[0.08] bg-card backdrop-blur-xl shadow-xl overflow-hidden font-mono text-xs">
       {/* Top Bar */}
-      <div className="flex items-center justify-between px-3.5 py-1.5 bg-white/[0.02] border-b border-white/[0.06]">
+      <div className="flex items-center justify-between px-3.5 py-1.5 bg-foreground/[0.02] border-b border-foreground/[0.06]">
         <div className="flex items-center gap-1.5">
-          <div className="w-2 h-2 rounded-full bg-rose-500/60" />
-          <div className="w-2 h-2 rounded-full bg-amber-500/60" />
-          <div className="w-2 h-2 rounded-full bg-emerald-500/60" />
-          <span className="ml-2 text-[10px] text-muted-foreground/80 flex items-center gap-1">
-            <TerminalIcon className="w-3 h-3 text-primary/70" />
+          <div className="w-2 h-2 rounded-full bg-rose-500/70" />
+          <div className="w-2 h-2 rounded-full bg-amber-500/70" />
+          <div className="w-2 h-2 rounded-full bg-emerald-500/70" />
+          <span className="ml-2 text-[10px] text-foreground/70 flex items-center gap-1">
+            <TerminalIcon className="w-3 h-3 text-primary" />
             aman-terminal
           </span>
         </div>
         <button
           onClick={handleCopy}
-          className="flex items-center gap-1 text-[10px] text-muted-foreground hover:text-foreground transition"
+          className="flex items-center gap-1 text-[10px] text-foreground/70 hover:text-primary transition cursor-pointer"
           title="Copy command"
         >
           {copied ? (
             <>
-              <Check className="w-3 h-3 text-emerald-400" />
-              <span className="text-emerald-400">Copied</span>
+              <Check className="w-3 h-3 text-emerald-500" />
+              <span className="text-emerald-500 font-semibold">Copied</span>
             </>
           ) : (
             <>
@@ -47,21 +47,21 @@ export default function TerminalSnippet() {
       </div>
 
       {/* Terminal Body */}
-      <div className="p-3 space-y-1.5 text-foreground/85 leading-relaxed">
+      <div className="p-3 space-y-1.5 text-foreground leading-relaxed">
         <div className="flex items-center gap-2">
           <span className="text-primary font-bold">❯</span>
-          <span className="text-foreground/90 font-medium">{command}</span>
+          <span className="text-foreground font-semibold">{command}</span>
         </div>
 
-        <div className="text-muted-foreground/85 space-y-0.5 text-[11px]">
+        <div className="text-foreground/75 space-y-0.5 text-[11px]">
           <p>
-            <span className="text-primary/90">⚡ Status:</span> Available for Full-Stack & Engineering Roles
+            <span className="text-primary font-bold">⚡ Status:</span> Available for Full-Stack & Engineering Roles
           </p>
           <p>
-            <span className="text-indigo-400/90">🛠 Stack:</span> Next.js · TypeScript · React · Node.js · AI
+            <span className="text-secondary font-bold">🛠 Stack:</span> Next.js · TypeScript · React · Node.js · AI
           </p>
           <p>
-            <span className="text-amber-400/90">🏆 Streak:</span> 250+ Days LeetCode DSA · SIH Finalist
+            <span className="text-amber-500 font-bold">🏆 Streak:</span> 250+ Days LeetCode DSA · SIH Finalist
           </p>
         </div>
       </div>

@@ -105,14 +105,14 @@ export default function HeroSection() {
 
             {/* Social Quick Links */}
             <div className="flex items-center gap-3 pt-1">
-              <span className="text-xs font-mono text-muted-foreground mr-1">
+              <span className="text-xs font-mono text-foreground/60 mr-1">
                 Ecosystem:
               </span>
               <a
                 href={PERSONAL_INFO.socials.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-xl border border-white/10 bg-white/[0.03] hover:border-primary/60 hover:text-primary hover:shadow-[0_0_15px_var(--glow-primary)] transition hover:scale-105"
+                className="p-2.5 rounded-xl border border-foreground/10 bg-card hover:border-primary/60 hover:text-primary hover:shadow-[0_0_15px_var(--glow-primary)] transition hover:scale-105"
                 title="GitHub"
               >
                 <Github className="w-4 h-4" />
@@ -121,7 +121,7 @@ export default function HeroSection() {
                 href={PERSONAL_INFO.socials.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-xl border border-white/10 bg-white/[0.03] hover:border-primary/60 hover:text-primary hover:shadow-[0_0_15px_var(--glow-primary)] transition hover:scale-105"
+                className="p-2.5 rounded-xl border border-foreground/10 bg-card hover:border-primary/60 hover:text-primary hover:shadow-[0_0_15px_var(--glow-primary)] transition hover:scale-105"
                 title="LinkedIn"
               >
                 <Linkedin className="w-4 h-4" />
@@ -130,7 +130,7 @@ export default function HeroSection() {
                 href={PERSONAL_INFO.socials.leetcode}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-xl border border-white/10 bg-white/[0.03] hover:border-primary/60 hover:text-primary hover:shadow-[0_0_15px_var(--glow-primary)] transition hover:scale-105"
+                className="p-2.5 rounded-xl border border-foreground/10 bg-card hover:border-primary/60 hover:text-primary hover:shadow-[0_0_15px_var(--glow-primary)] transition hover:scale-105"
                 title="LeetCode Profile"
               >
                 <Code className="w-4 h-4" />
@@ -139,7 +139,7 @@ export default function HeroSection() {
                 href={PERSONAL_INFO.socials.geeksforgeeks}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3 py-2 rounded-xl border border-white/10 bg-white/[0.03] hover:border-primary/60 hover:text-primary hover:shadow-[0_0_15px_var(--glow-primary)] transition text-xs font-mono font-bold"
+                className="px-3 py-2 rounded-xl border border-foreground/10 bg-card hover:border-primary/60 hover:text-primary hover:shadow-[0_0_15px_var(--glow-primary)] transition text-xs font-mono font-bold"
                 title="GeeksforGeeks"
               >
                 GfG
@@ -157,7 +157,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-5 relative flex items-center justify-center min-h-[420px] lg:min-h-[520px]"
+            className="lg:col-span-5 relative flex items-center justify-center min-h-[420px] lg:min-h-[520px] -mt-4 lg:-mt-10"
           >
             {/* Glowing Backdrop Ring */}
             <div className="absolute inset-4 rounded-full bg-gradient-to-tr from-primary/20 via-secondary/15 to-transparent blur-[80px] pointer-events-none" />

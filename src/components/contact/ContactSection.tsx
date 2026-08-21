@@ -316,7 +316,7 @@ export default function ContactSection() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div className="space-y-2">
-                    <label className="text-xs font-mono font-bold text-muted-foreground uppercase tracking-wider">
+                    <label className="text-xs font-mono font-bold text-foreground/75 uppercase tracking-wider">
                       Your Full Name <span className="text-primary">*</span>
                     </label>
                     <input
@@ -327,12 +327,12 @@ export default function ContactSection() {
                       onChange={(e) =>
                         setFormData({ ...formData, name: e.target.value })
                       }
-                      className="w-full px-4 py-3 rounded-2xl border border-white/10 bg-background/60 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:shadow-[0_0_20px_var(--glow-primary)] transition"
+                      className="w-full px-4 py-3 rounded-2xl border border-foreground/15 bg-card text-sm text-foreground placeholder:text-foreground/45 focus:outline-none focus:border-primary focus:shadow-[0_0_20px_var(--glow-primary)] transition"
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-xs font-mono font-bold text-muted-foreground uppercase tracking-wider">
+                    <label className="text-xs font-mono font-bold text-foreground/75 uppercase tracking-wider">
                       Your Email Address <span className="text-primary">*</span>
                     </label>
                     <input
@@ -343,14 +343,14 @@ export default function ContactSection() {
                       onChange={(e) =>
                         setFormData({ ...formData, email: e.target.value })
                       }
-                      className="w-full px-4 py-3 rounded-2xl border border-white/10 bg-background/60 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:shadow-[0_0_20px_var(--glow-primary)] transition"
+                      className="w-full px-4 py-3 rounded-2xl border border-foreground/15 bg-card text-sm text-foreground placeholder:text-foreground/45 focus:outline-none focus:border-primary focus:shadow-[0_0_20px_var(--glow-primary)] transition"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-xs font-mono font-bold text-muted-foreground uppercase tracking-wider">
-                    Subject / Topic <span className="text-muted-foreground/60 text-[10px] lowercase font-normal">(optional)</span>
+                  <label className="text-xs font-mono font-bold text-foreground/75 uppercase tracking-wider">
+                    Subject / Topic <span className="text-foreground/50 text-[10px] lowercase font-normal">(optional)</span>
                   </label>
                   <input
                     type="text"
@@ -359,12 +359,12 @@ export default function ContactSection() {
                     onChange={(e) =>
                       setFormData({ ...formData, subject: e.target.value })
                     }
-                    className="w-full px-4 py-3 rounded-2xl border border-white/10 bg-background/60 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:shadow-[0_0_20px_var(--glow-primary)] transition"
+                    className="w-full px-4 py-3 rounded-2xl border border-foreground/15 bg-card text-sm text-foreground placeholder:text-foreground/45 focus:outline-none focus:border-primary focus:shadow-[0_0_20px_var(--glow-primary)] transition"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-xs font-mono font-bold text-muted-foreground uppercase tracking-wider">
+                  <label className="text-xs font-mono font-bold text-foreground/75 uppercase tracking-wider">
                     Message / Opportunity Scope <span className="text-primary">*</span>
                   </label>
                   <textarea
@@ -375,7 +375,7 @@ export default function ContactSection() {
                     onChange={(e) =>
                       setFormData({ ...formData, message: e.target.value })
                     }
-                    className="w-full px-4 py-3 rounded-2xl border border-white/10 bg-background/60 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:shadow-[0_0_20px_var(--glow-primary)] transition resize-none"
+                    className="w-full px-4 py-3 rounded-2xl border border-foreground/15 bg-card text-sm text-foreground placeholder:text-foreground/45 focus:outline-none focus:border-primary focus:shadow-[0_0_20px_var(--glow-primary)] transition resize-none"
                   />
                 </div>
 

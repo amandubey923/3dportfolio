@@ -55,9 +55,18 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
             {/* Top Close & Category Tag */}
             <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
-              <span className="px-3.5 py-1.5 rounded-full border border-primary/40 bg-black/75 backdrop-blur-md text-primary text-xs font-mono font-bold uppercase tracking-wider shadow-lg">
-                {project.category}
-              </span>
+              <div className="flex items-center gap-2">
+                <span className="px-3.5 py-1.5 rounded-full border border-primary/40 bg-black/75 backdrop-blur-md text-primary text-xs font-mono font-bold uppercase tracking-wider shadow-lg">
+                  {project.category}
+                </span>
+                {project.id === "readers-hub" && (
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-amber-400/60 bg-slate-950/90 text-amber-300 text-xs font-bold uppercase tracking-wider backdrop-blur-md shadow-[0_0_16px_rgba(245,158,11,0.35)]">
+                    <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                    <span className="font-extrabold text-amber-400">#1</span>
+                    <span className="font-bold text-amber-200">FEATURED</span>
+                  </span>
+                )}
+              </div>
               <button
                 onClick={onClose}
                 className="p-2 rounded-full border border-white/20 bg-black/70 backdrop-blur-md text-white hover:bg-primary hover:text-primary-foreground transition shadow-lg"

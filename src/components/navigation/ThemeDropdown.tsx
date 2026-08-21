@@ -51,32 +51,33 @@ export default function ThemeDropdown({ isOpen, onClose }: ThemeDropdownProps) {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: -6 }}
           transition={{ duration: 0.15, ease: "easeOut" }}
-          className="absolute right-0 top-full mt-2 w-72 sm:w-80 rounded-2xl border border-primary/30 bg-card/95 backdrop-blur-2xl shadow-[0_12px_40px_rgba(0,0,0,0.5)] p-3.5 z-50 overflow-hidden space-y-3"
+          style={{ backgroundColor: "var(--background-subtle)" }}
+          className="absolute right-0 top-full mt-2 w-72 sm:w-80 rounded-2xl border border-foreground/15 dark:border-primary/40 shadow-[0_20px_60px_rgba(0,0,0,0.35)] dark:shadow-[0_25px_70px_rgba(0,0,0,0.85)] p-3.5 z-[100] overflow-hidden space-y-3 backdrop-blur-2xl"
         >
           {/* Header */}
-          <div className="flex items-center justify-between pb-2 border-b border-white/10">
+          <div className="flex items-center justify-between pb-2 border-b border-foreground/[0.08]">
             <span className="text-xs font-mono font-bold text-foreground uppercase tracking-wider">
               Appearance
             </span>
             <button
               onClick={onClose}
-              className="p-1 rounded-lg hover:bg-white/10 text-muted-foreground hover:text-foreground transition"
-              aria-label="Close"
+              className="p-1 rounded-lg hover:bg-foreground/[0.08] text-foreground/70 hover:text-foreground transition cursor-pointer"
+              aria-label="Close appearance menu"
             >
               <X className="w-3.5 h-3.5" />
             </button>
           </div>
 
           {/* Light / Dark Segmented Switcher */}
-          <div className="flex items-center p-0.5 rounded-xl border border-white/10 bg-background/70 backdrop-blur-md">
+          <div className="flex items-center p-0.5 rounded-xl border border-foreground/[0.08] bg-foreground/[0.03]">
             <button
               onClick={() => {
                 if (isDark) toggleDarkLight();
               }}
-              className={`flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+              className={`flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                 !isDark
                   ? "bg-amber-400 text-black shadow-sm font-bold"
-                  : "text-muted-foreground hover:text-foreground"
+                  : "text-foreground/70 hover:text-foreground hover:bg-foreground/[0.05]"
               }`}
             >
               <Sun className="w-3.5 h-3.5" />
@@ -87,10 +88,10 @@ export default function ThemeDropdown({ isOpen, onClose }: ThemeDropdownProps) {
               onClick={() => {
                 if (!isDark) toggleDarkLight();
               }}
-              className={`flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+              className={`flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                 isDark
                   ? "btn-primary-gradient text-primary-foreground shadow-sm font-bold"
-                  : "text-muted-foreground hover:text-foreground"
+                  : "text-foreground/70 hover:text-foreground hover:bg-foreground/[0.05]"
               }`}
             >
               <Moon className="w-3.5 h-3.5" />
@@ -100,28 +101,28 @@ export default function ThemeDropdown({ isOpen, onClose }: ThemeDropdownProps) {
 
           {/* Section Subtitle */}
           <div className="pt-0.5">
-            <span className="text-[10px] font-mono font-semibold text-muted-foreground uppercase tracking-wider block mb-1.5">
+            <span className="text-[10px] font-mono font-semibold text-foreground/60 uppercase tracking-wider block mb-1.5">
               Curated Color Themes
             </span>
 
             {/* Vertical Compact Theme Rows */}
-            <div className="space-y-1 max-h-64 overflow-y-auto pr-0.5">
+            <div className="space-y-1 max-h-64 overflow-y-auto pr-0.5 no-scrollbar">
               {allThemes.map((theme) => {
                 const isSelected = theme.id === themeId;
                 return (
                   <button
                     key={theme.id}
                     onClick={() => setTheme(theme.id)}
-                    className={`w-full flex items-center justify-between p-2 rounded-xl transition-all text-left group ${
+                    className={`w-full flex items-center justify-between p-2 rounded-xl transition-all text-left group cursor-pointer ${
                       isSelected
                         ? "bg-primary/15 border border-primary/40 shadow-[0_0_12px_var(--glow-primary)]"
-                        : "hover:bg-white/[0.05] border border-transparent"
+                        : "hover:bg-foreground/[0.05] border border-transparent"
                     }`}
                   >
                     <div className="flex items-center gap-2.5 min-w-0">
                       {/* Circular Swatch */}
                       <span
-                        className="w-4 h-4 rounded-full shrink-0 border border-white/20 shadow-sm"
+                        className="w-4 h-4 rounded-full shrink-0 border border-foreground/20 shadow-sm"
                         style={{
                           background: `linear-gradient(135deg, ${theme.previewColor} 0%, ${theme.secondaryPreview} 100%)`,
                         }}
@@ -136,7 +137,7 @@ export default function ThemeDropdown({ isOpen, onClose }: ThemeDropdownProps) {
                         >
                           {theme.name}
                         </span>
-                        <span className="text-[10px] text-muted-foreground truncate">
+                        <span className="text-[10px] text-foreground/60 truncate">
                           {theme.tagline}
                         </span>
                       </div>
@@ -151,18 +152,8 @@ export default function ThemeDropdown({ isOpen, onClose }: ThemeDropdownProps) {
               })}
             </div>
           </div>
-
-          {/* Compact Persistence Note */}
-          <div className="pt-2 border-t border-white/10 flex items-center justify-between text-[10px] text-muted-foreground font-mono">
-            <span className="flex items-center gap-1 text-primary">
-              <Sparkles className="w-3 h-3" />
-              Saved automatically
-            </span>
-            <span>Esc to close</span>
-          </div>
         </motion.div>
       )}
     </AnimatePresence>
   );
 }
-

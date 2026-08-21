@@ -194,7 +194,7 @@ export default function PortfolioChatbot() {
             className="mb-4 w-[360px] sm:w-[410px] max-w-[calc(100vw-32px)] h-[540px] max-h-[78vh] flex flex-col rounded-3xl border border-primary/30 bg-card/95 backdrop-blur-2xl shadow-[0_16px_50px_rgba(0,0,0,0.6)] overflow-hidden"
           >
             {/* Header */}
-            <div className="px-5 py-4 bg-white/[0.03] border-b border-white/10 flex items-center justify-between">
+            <div className="px-5 py-4 bg-foreground/[0.03] border-b border-foreground/10 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="relative flex items-center justify-center w-9 h-9 rounded-xl bg-primary/15 border border-primary/40 shadow-[0_0_15px_var(--glow-primary)]">
                   <Bot className="w-5 h-5 text-primary" />
@@ -207,7 +207,7 @@ export default function PortfolioChatbot() {
                       ASSISTANT
                     </span>
                   </h3>
-                  <p className="text-[11px] text-muted-foreground mt-1 flex items-center gap-1">
+                  <p className="text-[11px] text-foreground/60 mt-1 flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block" />
                     Portfolio Assistant • Online
                   </p>
@@ -218,14 +218,14 @@ export default function PortfolioChatbot() {
                 <button
                   onClick={handleClear}
                   title="Clear conversation"
-                  className="p-2 rounded-xl text-muted-foreground hover:text-foreground hover:bg-white/5 transition"
+                  className="p-2 rounded-xl text-foreground/60 hover:text-foreground hover:bg-foreground/[0.05] transition cursor-pointer"
                 >
                   <RotateCcw className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => setIsOpen(false)}
                   title="Close chat"
-                  className="p-2 rounded-xl text-muted-foreground hover:text-foreground hover:bg-white/5 transition"
+                  className="p-2 rounded-xl text-foreground/60 hover:text-foreground hover:bg-foreground/[0.05] transition cursor-pointer"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -233,13 +233,13 @@ export default function PortfolioChatbot() {
             </div>
 
             {/* Quick Prompts Bar */}
-            <div className="px-4 py-2 bg-white/[0.015] border-b border-white/5 flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+            <div className="px-4 py-2 bg-foreground/[0.015] border-b border-foreground/5 flex items-center gap-1.5 overflow-x-auto no-scrollbar">
               {QUICK_PROMPTS.map((prompt, i) => (
                 <button
                   key={i}
                   onClick={() => handleSend(prompt)}
                   disabled={isLoading}
-                  className="shrink-0 px-2.5 py-1 rounded-lg border border-white/10 bg-white/[0.03] hover:border-primary/50 hover:bg-primary/10 text-[11px] font-medium text-foreground/80 hover:text-primary transition active:scale-95 disabled:opacity-50"
+                  className="shrink-0 px-2.5 py-1 rounded-lg border border-foreground/10 bg-foreground/[0.03] hover:border-primary/50 hover:bg-primary/10 text-[11px] font-medium text-foreground/80 hover:text-primary transition active:scale-95 disabled:opacity-50 cursor-pointer"
                 >
                   {prompt}
                 </button>
@@ -259,7 +259,7 @@ export default function PortfolioChatbot() {
                       className={`w-7 h-7 rounded-lg shrink-0 flex items-center justify-center text-[11px] font-mono ${
                         isUser
                           ? "bg-primary text-primary-foreground font-bold"
-                          : "bg-white/10 text-primary border border-white/10"
+                          : "bg-foreground/[0.06] text-primary border border-foreground/10"
                       }`}
                     >
                       {isUser ? <User className="w-3.5 h-3.5" /> : <Bot className="w-3.5 h-3.5" />}
@@ -268,12 +268,12 @@ export default function PortfolioChatbot() {
                     <div
                       className={`max-w-[82%] px-3.5 py-2.5 rounded-2xl leading-relaxed ${
                         isUser
-                          ? "bg-primary/20 border border-primary/40 text-foreground shadow-sm rounded-tr-sm"
-                          : "bg-white/[0.04] border border-white/10 text-foreground/90 rounded-tl-sm"
+                          ? "bg-primary/20 border border-primary/40 text-foreground shadow-sm rounded-tr-sm font-medium"
+                          : "bg-foreground/[0.04] border border-foreground/10 text-foreground rounded-tl-sm"
                       }`}
                     >
                       <div>{renderFormattedText(m.content)}</div>
-                      <div className="text-[9px] font-mono text-muted-foreground/70 mt-1 text-right">
+                      <div className="text-[9px] font-mono text-foreground/50 mt-1 text-right">
                         {m.timestamp}
                       </div>
                     </div>
@@ -283,8 +283,8 @@ export default function PortfolioChatbot() {
 
               {/* Typing Indicator */}
               {isLoading && (
-                <div className="flex items-center gap-2 text-muted-foreground text-xs pl-9">
-                  <div className="flex items-center gap-1 p-2 rounded-xl bg-white/[0.04] border border-white/10">
+                <div className="flex items-center gap-2 text-foreground/60 text-xs pl-9">
+                  <div className="flex items-center gap-1 p-2 rounded-xl bg-foreground/[0.04] border border-foreground/10">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary animate-bounce" />
                     <span
                       className="w-1.5 h-1.5 rounded-full bg-primary animate-bounce"
@@ -302,8 +302,8 @@ export default function PortfolioChatbot() {
             </div>
 
             {/* Input & Disclaimer */}
-            <div className="p-3.5 bg-white/[0.02] border-t border-white/10 space-y-2">
-              <div className="flex items-end gap-2 p-1.5 rounded-2xl bg-black/60 border border-white/15 focus-within:border-primary/60 transition shadow-inner">
+            <div className="p-3.5 bg-foreground/[0.02] border-t border-foreground/10 space-y-2">
+              <div className="flex items-end gap-2 p-1.5 rounded-2xl bg-background border border-foreground/15 focus-within:border-primary/60 transition shadow-inner">
                 <textarea
                   ref={inputRef}
                   value={inputMessage}
@@ -311,12 +311,12 @@ export default function PortfolioChatbot() {
                   onKeyDown={handleKeyDown}
                   placeholder="Ask about Aman's projects, stack, experience..."
                   rows={1}
-                  className="flex-1 max-h-24 bg-transparent resize-none px-3 py-1.5 text-xs sm:text-sm text-foreground focus:outline-none placeholder:text-muted-foreground/70 leading-normal"
+                  className="flex-1 max-h-24 bg-transparent resize-none px-3 py-1.5 text-xs sm:text-sm text-foreground focus:outline-none placeholder:text-foreground/45 leading-normal"
                 />
                 <button
                   onClick={() => handleSend()}
                   disabled={!inputMessage.trim() || isLoading}
-                  className="p-2 rounded-xl btn-primary-gradient text-primary-foreground disabled:opacity-40 disabled:cursor-not-allowed transition shrink-0 active:scale-95"
+                  className="p-2 rounded-xl btn-primary-gradient text-primary-foreground disabled:opacity-40 disabled:cursor-not-allowed transition shrink-0 active:scale-95 cursor-pointer"
                   title="Send message"
                 >
                   <Send className="w-3.5 h-3.5" />
