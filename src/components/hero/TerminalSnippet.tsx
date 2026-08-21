@@ -62,6 +62,7 @@ export default function TerminalSnippet() {
           </p>
           <p>
             <span className="text-amber-400/90">🏆 Streak:</span> 100+ Days LeetCode DSA · SIH Finalist
+            <span className="text-amber-400/90">🏆 Streak:</span> 250+ Days LeetCode DSA · SIH Finalist
           </p>
         </div>
       </div>

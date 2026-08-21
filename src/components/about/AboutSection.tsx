@@ -143,6 +143,7 @@ export default function AboutSection() {
               </h4>
               <p className="text-xs text-muted-foreground leading-relaxed">
                 Tested in national hackathons (SIH Finalist) and 100+ unbroken days of algorithmic problem solving.
+                Tested in national hackathons (SIH Finalist) and 250+ unbroken days of algorithmic problem solving.
               </p>
             </div>
 

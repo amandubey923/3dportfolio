@@ -57,6 +57,7 @@ export const PERSONAL_INFO = {
   subheadline: "Building scalable web applications, modern responsive interfaces, and production-ready full-stack software.",
   bioShort: "Disciplined software engineer focused on building clean, scalable, and high-performance web applications with modern technologies and reliable architecture.",
   bioDetailed: `I am an Information Technology engineer focused on solid software fundamentals, clean code architecture, and high-performance user experiences. I build full-stack web applications using React, Next.js, Node.js, Express, and MongoDB/SQL with a strong emphasis on reliability and clean UI. Beyond engineering, I actively practice algorithmic problem solving (100+ LeetCode streak) and enjoy learning new languages to sharpen problem-solving agility.`,
+  bioDetailed: `I am an Information Technology engineer focused on solid software fundamentals, clean code architecture, and high-performance user experiences. I build full-stack web applications using React, Next.js, Node.js, Express, and MongoDB/SQL with a strong emphasis on reliability and clean UI. Beyond engineering, I actively practice algorithmic problem solving (250+ LeetCode streak) and enjoy learning new languages to sharpen problem-solving agility.`,
   status: "Available for Roles & Opportunities",
   statusColor: "emerald",
   email: "kumaraman19137@gmail.com",
@@ -75,6 +76,8 @@ export const PERSONAL_INFO = {
   stats: [
     { label: "Real-World Projects Built", value: "8+" },
     { label: "LeetCode Consistency", value: "100+ Days" },
+    { label: "Real-World Projects Built", value: "10+" },
+    { label: "LeetCode Consistency", value: "250+ Days" },
     { label: "National Hackathons", value: "SIH Finalist" },
     { label: "Core Technical Stack", value: "MERN & Next.js" },
   ],
@@ -377,8 +380,10 @@ export const EXPERIENCES_DATA: ExperienceItem[] = [
     period: "2023 – Present",
     type: "Development",
     badge: "8+ Shipped Apps",
+    badge: "10+ Shipped Apps",
     highlights: [
       "Engineered and shipped 8+ production web applications including SaaS products, digital libraries, and validation engines.",
+      "Engineered and shipped 10+ production web applications including SaaS products, digital libraries, and validation engines.",
       "Implemented full-lifecycle authentication, MongoDB data schemas, CSV stream parsing, and WebRTC streaming.",
       "Maintained 100% live uptime on deployments across Vercel and Netlify platforms.",
       "Focused on clean code modularity, TypeScript type guarantees, and fluid responsive design across all viewports.",
@@ -391,8 +396,10 @@ export const EXPERIENCES_DATA: ExperienceItem[] = [
     period: "Ongoing Discipline",
     type: "Problem Solving",
     badge: "100+ Days Badge",
+    badge: "250+ Days Badge",
     highlights: [
       "Earned the LeetCode 100 Days Badge through consistent, unbroken daily algorithmic problem solving.",
+      "Achieved 250+ consecutive days of unbroken algorithmic problem solving on LeetCode.",
       "Strengthened proficiency in arrays, trees, dynamic programming, graph traversals, and complexity optimization in C++ and JavaScript.",
       "Active participant in competitive coding practice with focus on optimal time and space complexity.",
     ],

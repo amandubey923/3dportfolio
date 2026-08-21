@@ -40,12 +40,12 @@ export default function DeveloperWorldCanvas() {
     // --- Scene Setup ---
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
-      42,
+      45,
       container.clientWidth / container.clientHeight,
       0.1,
       1000
     );
-    camera.position.z = 8.5;
+    camera.position.set(0, 0.2, 7.8);
 
     let renderer: THREE.WebGLRenderer | null = null;
     try {
@@ -57,117 +57,178 @@ export default function DeveloperWorldCanvas() {
       renderer.setSize(container.clientWidth, container.clientHeight);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
-      renderer.toneMappingExposure = 1.0;
+      renderer.toneMappingExposure = 1.1;
       container.appendChild(renderer.domElement);
     } catch {
       setWebglSupported(false);
       return;
     }
 
-    // --- Soft Atmospheric Lighting ---
+    // --- Cinematic Studio Lighting ---
     const ambientLight = new THREE.AmbientLight(
       currentTheme.threeLight.ambientColor,
-      1.2
+      1.4
     );
     scene.add(ambientLight);
 
-    const primaryLight = new THREE.PointLight(
+    // Key Light (Theme Primary Accent)
+    const keyLight = new THREE.PointLight(
       currentTheme.threeLight.primaryLightColor,
-      1.8,
-      40
+      2.6,
+      35
     );
-    primaryLight.position.set(4, 4, 4);
-    scene.add(primaryLight);
+    keyLight.position.set(3.5, 4.0, 4.5);
+    scene.add(keyLight);
 
-    const secondaryLight = new THREE.PointLight(
+    // Fill Light (Secondary Hue)
+    const fillLight = new THREE.PointLight(
       currentTheme.threeLight.secondaryLightColor,
-      1.4,
-      40
+      1.8,
+      35
     );
-    secondaryLight.position.set(-4, -3, -2);
-    scene.add(secondaryLight);
+    fillLight.position.set(-4.0, -2.5, 3.0);
+    scene.add(fillLight);
 
-    // --- Core Holographic Group ---
-    const coreGroup = new THREE.Group();
-    scene.add(coreGroup);
+    // Rim/Backlight (High-tech Edge Glow)
+    const rimLight = new THREE.PointLight(0xffffff, 2.2, 30);
+    rimLight.position.set(0, 3.5, -4.5);
+    scene.add(rimLight);
 
-    // Inner glowing core - soft translucent
-    const innerGeometry = new THREE.IcosahedronGeometry(1.5, 2);
-    const innerMaterial = new THREE.MeshStandardMaterial({
-      color: currentTheme.threeLight.coreColor,
-      emissive: currentTheme.threeLight.coreColor,
-      emissiveIntensity: 0.25,
-      roughness: 0.4,
-      metalness: 0.6,
-      wireframe: false,
-      transparent: true,
-      opacity: 0.75,
+    // =========================================================================
+    //  FUTURISTIC CYBER-DEVELOPER AVATAR / AI BUST
+    // =========================================================================
+    const avatarGroup = new THREE.Group();
+    avatarGroup.position.set(0, -0.2, 0);
+    scene.add(avatarGroup);
+
+    // Shared Materials
+    const obsidianMat = new THREE.MeshStandardMaterial({
+      color: 0x090d16,
+      roughness: 0.25,
+      metalness: 0.88,
+      envMapIntensity: 1.0,
     });
-    const innerCore = new THREE.Mesh(innerGeometry, innerMaterial);
-    coreGroup.add(innerCore);
 
-    // Outer wireframe cage - restrained
-    const outerGeometry = new THREE.IcosahedronGeometry(2.0, 1);
-    const outerMaterial = new THREE.MeshStandardMaterial({
+    const titaniumMat = new THREE.MeshStandardMaterial({
+      color: 0x182030,
+      roughness: 0.35,
+      metalness: 0.92,
+    });
+
+    const visorMat = new THREE.MeshStandardMaterial({
+      color: currentTheme.threeLight.primaryLightColor,
+      emissive: currentTheme.threeLight.primaryLightColor,
+      emissiveIntensity: 0.95,
+      roughness: 0.1,
+      metalness: 0.5,
+    });
+
+    const wireMat = new THREE.MeshStandardMaterial({
       color: currentTheme.threeLight.wireframeColor,
       emissive: currentTheme.threeLight.wireframeColor,
-      emissiveIntensity: 0.2,
+      emissiveIntensity: 0.4,
       wireframe: true,
       transparent: true,
-      opacity: 0.35,
+      opacity: 0.4,
     });
-    const outerCage = new THREE.Mesh(outerGeometry, outerMaterial);
-    coreGroup.add(outerCage);
 
-    // Middle Torus Rings
-    const torusGeometry = new THREE.TorusGeometry(2.5, 0.025, 16, 100);
-    const torusMaterial = new THREE.MeshStandardMaterial({
-      color: currentTheme.threeLight.wireframeColor,
-      emissive: currentTheme.threeLight.wireframeColor,
-      emissiveIntensity: 0.3,
+    // 1. Head Cranium (Sculpted Polyhedral Cybernetic Helmet)
+    const craniumGeo = new THREE.DodecahedronGeometry(1.35, 1);
+    const craniumMesh = new THREE.Mesh(craniumGeo, obsidianMat);
+    craniumMesh.scale.set(0.95, 1.15, 1.05);
+    avatarGroup.add(craniumMesh);
+
+    // Cranium Wireframe Holographic Aura Layer
+    const craniumWireGeo = new THREE.DodecahedronGeometry(1.42, 1);
+    const craniumWireMesh = new THREE.Mesh(craniumWireGeo, wireMat);
+    craniumWireMesh.scale.set(0.95, 1.15, 1.05);
+    avatarGroup.add(craniumWireMesh);
+
+    // 2. Visor / Neural Ocular Sensor (Curved High-Tech Bar)
+    const visorGeo = new THREE.TorusGeometry(1.28, 0.085, 16, 48, Math.PI * 0.55);
+    const visorMesh = new THREE.Mesh(visorGeo, visorMat);
+    visorMesh.position.set(0, 0.15, 0.55);
+    visorMesh.rotation.set(-Math.PI / 8, Math.PI * 0.725, 0);
+    avatarGroup.add(visorMesh);
+
+    // 3. Facet Jawline & Faceplate
+    const jawGeo = new THREE.ConeGeometry(0.85, 1.1, 4);
+    const jawMesh = new THREE.Mesh(jawGeo, titaniumMat);
+    jawMesh.position.set(0, -0.65, 0.35);
+    jawMesh.rotation.set(Math.PI, Math.PI / 4, 0);
+    avatarGroup.add(jawMesh);
+
+    // 4. Cyber Neck & Collar Collarbone Chassis
+    const neckGeo = new THREE.CylinderGeometry(0.52, 0.68, 0.75, 8);
+    const neckMesh = new THREE.Mesh(neckGeo, obsidianMat);
+    neckMesh.position.set(0, -1.05, 0);
+    avatarGroup.add(neckMesh);
+
+    // Collar Chassis Base
+    const collarGeo = new THREE.TorusGeometry(1.4, 0.14, 8, 32);
+    const collarMesh = new THREE.Mesh(collarGeo, titaniumMat);
+    collarMesh.position.set(0, -1.45, 0);
+    collarMesh.rotation.x = Math.PI / 2;
+    avatarGroup.add(collarMesh);
+
+    // 5. Floating Holographic Quantum Halo Rings
+    const haloGroup = new THREE.Group();
+    avatarGroup.add(haloGroup);
+
+    const ringGeo1 = new THREE.TorusGeometry(2.3, 0.02, 16, 120);
+    const ringMat1 = new THREE.MeshStandardMaterial({
+      color: currentTheme.threeLight.primaryLightColor,
+      emissive: currentTheme.threeLight.primaryLightColor,
+      emissiveIntensity: 0.6,
+      transparent: true,
+      opacity: 0.6,
+    });
+    const haloRing1 = new THREE.Mesh(ringGeo1, ringMat1);
+    haloRing1.rotation.x = Math.PI / 3;
+    haloRing1.rotation.y = Math.PI / 6;
+    haloGroup.add(haloRing1);
+
+    const ringGeo2 = new THREE.TorusGeometry(2.6, 0.018, 16, 120);
+    const ringMat2 = new THREE.MeshStandardMaterial({
+      color: currentTheme.threeLight.secondaryLightColor,
+      emissive: currentTheme.threeLight.secondaryLightColor,
+      emissiveIntensity: 0.5,
       transparent: true,
       opacity: 0.45,
     });
-    const torusRing1 = new THREE.Mesh(torusGeometry, torusMaterial);
-    torusRing1.rotation.x = Math.PI / 3;
-    coreGroup.add(torusRing1);
+    const haloRing2 = new THREE.Mesh(ringGeo2, ringMat2);
+    haloRing2.rotation.x = -Math.PI / 4;
+    haloRing2.rotation.y = -Math.PI / 5;
+    haloGroup.add(haloRing2);
 
-    const torusRing2 = new THREE.Mesh(torusGeometry, torusMaterial);
-    torusRing2.rotation.y = Math.PI / 4;
-    torusRing2.rotation.x = -Math.PI / 6;
-    coreGroup.add(torusRing2);
+    // 6. Orbiting Neural Data Nodes
+    const nodesGroup = new THREE.Group();
+    avatarGroup.add(nodesGroup);
 
-    // --- Orbiting Satellites ---
-    const satellitesGroup = new THREE.Group();
-    scene.add(satellitesGroup);
-
-    const satelliteCount = 4;
-    const satellites: THREE.Mesh[] = [];
-    for (let i = 0; i < satelliteCount; i++) {
-      const satGeo = new THREE.OctahedronGeometry(0.2, 0);
-      const satMat = new THREE.MeshStandardMaterial({
+    const nodeCount = 5;
+    const nodes: THREE.Mesh[] = [];
+    for (let i = 0; i < nodeCount; i++) {
+      const nodeGeo = new THREE.OctahedronGeometry(0.12, 0);
+      const nodeMat = new THREE.MeshStandardMaterial({
         color: currentTheme.threeLight.primaryLightColor,
         emissive: currentTheme.threeLight.primaryLightColor,
-        emissiveIntensity: 0.3,
-        roughness: 0.5,
-        metalness: 0.5,
-        transparent: true,
-        opacity: 0.8,
+        emissiveIntensity: 0.8,
+        roughness: 0.2,
       });
-      const satMesh = new THREE.Mesh(satGeo, satMat);
-      satellites.push(satMesh);
-      satellitesGroup.add(satMesh);
+      const nodeMesh = new THREE.Mesh(nodeGeo, nodeMat);
+      nodes.push(nodeMesh);
+      nodesGroup.add(nodeMesh);
     }
 
-    // --- Ambient Particle Dust ---
-    const particleCount = 300;
+    // 7. Ambient Particle Matrix (Atmospheric Space Dust)
+    const particleCount = 220;
     const particleGeometry = new THREE.BufferGeometry();
     const particlePositions = new Float32Array(particleCount * 3);
 
     for (let i = 0; i < particleCount * 3; i += 3) {
-      particlePositions[i] = (Math.random() - 0.5) * 18;
-      particlePositions[i + 1] = (Math.random() - 0.5) * 18;
-      particlePositions[i + 2] = (Math.random() - 0.5) * 12;
+      particlePositions[i] = (Math.random() - 0.5) * 16;
+      particlePositions[i + 1] = (Math.random() - 0.5) * 16;
+      particlePositions[i + 2] = (Math.random() - 0.5) * 10;
     }
 
     particleGeometry.setAttribute(
@@ -177,112 +238,64 @@ export default function DeveloperWorldCanvas() {
 
     const particleMaterial = new THREE.PointsMaterial({
       color: currentTheme.threeLight.particleColor,
-      size: 0.035,
+      size: 0.04,
       transparent: true,
-      opacity: 0.35,
+      opacity: 0.4,
       blending: THREE.AdditiveBlending,
     });
 
     const particles = new THREE.Points(particleGeometry, particleMaterial);
     scene.add(particles);
 
-    // --- Mouse Parallax (Controlled & Smooth) ---
+    // --- Mouse Parallax & Dynamic Tracking ---
     const mouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
     const handleMouseMove = (e: MouseEvent) => {
       const rect = container.getBoundingClientRect();
       const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
       const y = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
-      mouse.targetX = x * 0.4;
-      mouse.targetY = y * 0.4;
+      mouse.targetX = x * 0.45;
+      mouse.targetY = y * 0.35;
     };
 
     window.addEventListener("mousemove", handleMouseMove);
 
-    // --- Theme Color Sync Event ---
-    const handleThemeChange = (e: Event) => {
-      const customEvent = e as CustomEvent;
-      const theme = customEvent.detail;
-      if (!theme || !theme.threeLight) return;
-
-      ambientLight.color.setHex(theme.threeLight.ambientColor);
-      primaryLight.color.setHex(theme.threeLight.primaryLightColor);
-      secondaryLight.color.setHex(theme.threeLight.secondaryLightColor);
-      innerMaterial.color.setHex(theme.threeLight.coreColor);
-      innerMaterial.emissive.setHex(theme.threeLight.coreColor);
-      outerMaterial.color.setHex(theme.threeLight.wireframeColor);
-      outerMaterial.emissive.setHex(theme.threeLight.wireframeColor);
-      torusMaterial.color.setHex(theme.threeLight.wireframeColor);
-      torusMaterial.emissive.setHex(theme.threeLight.wireframeColor);
-      particleMaterial.color.setHex(theme.threeLight.particleColor);
-
-      satellites.forEach((sat) => {
-        (sat.material as THREE.MeshStandardMaterial).color.setHex(
-          theme.threeLight.primaryLightColor
-        );
-        (sat.material as THREE.MeshStandardMaterial).emissive.setHex(
-          theme.threeLight.primaryLightColor
-        );
-      });
-    };
-
-    window.addEventListener("portfolio-theme-change", handleThemeChange);
-
-    // --- Visibility & Render Loop ---
-    let isVisible = true;
+    // --- Animation Loop ---
     let animationFrameId: number;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          isVisible = entry.isIntersecting;
-        });
-      },
-      { threshold: 0.05 }
-    );
-    observer.observe(container);
-
     let clock = new THREE.Clock();
 
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate);
 
-      if (!isVisible) return;
-
       const elapsedTime = clock.getElapsedTime();
-      const speedMultiplier = motionQuery.matches ? 0.15 : 0.7;
 
-      // Smooth mouse interpolation
-      mouse.x += (mouse.targetX - mouse.x) * 0.04;
-      mouse.y += (mouse.targetY - mouse.y) * 0.04;
+      if (!prefersReducedMotion) {
+        // Smooth mouse parallax damping
+        mouse.x += (mouse.targetX - mouse.x) * 0.06;
+        mouse.y += (mouse.targetY - mouse.y) * 0.06;
 
-      // Rotate core calmly
-      coreGroup.rotation.y = elapsedTime * 0.18 * speedMultiplier + mouse.x * 0.3;
-      coreGroup.rotation.x = Math.sin(elapsedTime * 0.1 * speedMultiplier) * 0.15 + mouse.y * 0.25;
+        // Avatar idle float and natural head turn
+        avatarGroup.position.y = -0.2 + Math.sin(elapsedTime * 1.4) * 0.06;
+        avatarGroup.rotation.y = mouse.x * 0.8 + Math.sin(elapsedTime * 0.6) * 0.08;
+        avatarGroup.rotation.x = -mouse.y * 0.5 + Math.cos(elapsedTime * 0.8) * 0.04;
 
-      outerCage.rotation.y = -elapsedTime * 0.22 * speedMultiplier;
-      outerCage.rotation.z = elapsedTime * 0.14 * speedMultiplier;
+        // Halo Rings counter-rotation
+        haloRing1.rotation.z = elapsedTime * 0.35;
+        haloRing2.rotation.z = -elapsedTime * 0.28;
 
-      torusRing1.rotation.z = elapsedTime * 0.25 * speedMultiplier;
-      torusRing2.rotation.z = -elapsedTime * 0.2 * speedMultiplier;
+        // Orbiting Neural Nodes
+        nodes.forEach((node, idx) => {
+          const angle = elapsedTime * 0.8 + (idx * Math.PI * 2) / nodeCount;
+          const radius = 2.4 + Math.sin(elapsedTime * 1.5 + idx) * 0.2;
+          node.position.x = Math.cos(angle) * radius;
+          node.position.y = Math.sin(angle * 0.7) * 1.2;
+          node.position.z = Math.sin(angle) * radius;
+          node.rotation.x = elapsedTime * 1.2;
+          node.rotation.y = elapsedTime * 1.5;
+        });
 
-      // Subtle pulse
-      const pulse = 1 + Math.sin(elapsedTime * 1.5 * speedMultiplier) * 0.025;
-      innerCore.scale.set(pulse, pulse, pulse);
-
-      // Orbit satellites
-      satellites.forEach((sat, idx) => {
-        const angle =
-          elapsedTime * 0.35 * speedMultiplier + (idx * Math.PI * 2) / satelliteCount;
-        const radius = 3.0 + Math.sin(elapsedTime * 0.8 + idx) * 0.2;
-        sat.position.x = Math.cos(angle) * radius;
-        sat.position.z = Math.sin(angle) * radius;
-        sat.position.y = Math.sin(angle * 1.5 + idx) * 0.6;
-        sat.rotation.x += 0.01;
-        sat.rotation.y += 0.015;
-      });
-
-      // Ambient particle rotation
-      particles.rotation.y = elapsedTime * 0.02 * speedMultiplier;
+        // Ambient particles slow drift
+        particles.rotation.y = elapsedTime * 0.025;
+      }
 
       if (renderer) {
         renderer.render(scene, camera);
@@ -291,50 +304,90 @@ export default function DeveloperWorldCanvas() {
 
     animate();
 
-    // --- Resize Handler ---
+    // --- Responsive Resize Handler ---
     const handleResize = () => {
       if (!container || !renderer) return;
-      const width = container.clientWidth;
-      const height = container.clientHeight;
-      camera.aspect = width / height;
+      camera.aspect = container.clientWidth / container.clientHeight;
       camera.updateProjectionMatrix();
-      renderer.setSize(width, height);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setSize(container.clientWidth, container.clientHeight);
     };
 
     window.addEventListener("resize", handleResize);
 
-    // --- Cleanup ---
-    return () => {
-      cancelAnimationFrame(animationFrameId);
-      observer.disconnect();
-      motionQuery.removeEventListener("change", handleMotionChange);
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("portfolio-theme-change", handleThemeChange);
-      window.removeEventListener("resize", handleResize);
+    // --- Theme Change Event Handler ---
+    const handleThemeChange = (e: CustomEvent) => {
+      const theme = e.detail;
+      if (!theme || !theme.threeLight) return;
 
-      if (renderer && renderer.domElement && container.contains(renderer.domElement)) {
-        container.removeChild(renderer.domElement);
-      }
+      ambientLight.color.set(theme.threeLight.ambientColor);
+      keyLight.color.set(theme.threeLight.primaryLightColor);
+      fillLight.color.set(theme.threeLight.secondaryLightColor);
 
-      innerGeometry.dispose();
-      innerMaterial.dispose();
-      outerGeometry.dispose();
-      outerMaterial.dispose();
-      torusGeometry.dispose();
-      torusMaterial.dispose();
-      particleGeometry.dispose();
-      particleMaterial.dispose();
-      satellites.forEach((sat) => {
-        sat.geometry.dispose();
-        (sat.material as THREE.Material).dispose();
+      visorMat.color.set(theme.threeLight.primaryLightColor);
+      visorMat.emissive.set(theme.threeLight.primaryLightColor);
+
+      wireMat.color.set(theme.threeLight.wireframeColor);
+      wireMat.emissive.set(theme.threeLight.wireframeColor);
+
+      ringMat1.color.set(theme.threeLight.primaryLightColor);
+      ringMat1.emissive.set(theme.threeLight.primaryLightColor);
+
+      ringMat2.color.set(theme.threeLight.secondaryLightColor);
+      ringMat2.emissive.set(theme.threeLight.secondaryLightColor);
+
+      nodes.forEach((node) => {
+        (node.material as THREE.MeshStandardMaterial).color.set(
+          theme.threeLight.primaryLightColor
+        );
+        (node.material as THREE.MeshStandardMaterial).emissive.set(
+          theme.threeLight.primaryLightColor
+        );
       });
 
-      if (renderer) {
+      particleMaterial.color.set(theme.threeLight.particleColor);
+    };
+
+    window.addEventListener(
+      "portfolio-theme-change" as any,
+      handleThemeChange as EventListener
+    );
+
+    // Cleanup
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener(
+        "portfolio-theme-change" as any,
+        handleThemeChange as EventListener
+      );
+      motionQuery.removeEventListener("change", handleMotionChange);
+      cancelAnimationFrame(animationFrameId);
+
+      if (renderer && renderer.domElement && container) {
+        container.removeChild(renderer.domElement);
         renderer.dispose();
       }
+
+      // Geometries & Materials disposal
+      craniumGeo.dispose();
+      craniumWireGeo.dispose();
+      visorGeo.dispose();
+      jawGeo.dispose();
+      neckGeo.dispose();
+      collarGeo.dispose();
+      ringGeo1.dispose();
+      ringGeo2.dispose();
+      particleGeometry.dispose();
+
+      obsidianMat.dispose();
+      titaniumMat.dispose();
+      visorMat.dispose();
+      wireMat.dispose();
+      ringMat1.dispose();
+      ringMat2.dispose();
+      particleMaterial.dispose();
     };
-  }, [currentTheme]);
+  }, [currentTheme, prefersReducedMotion]);
 
   if (!webglSupported) {
     return <Fallback3D />;
@@ -343,8 +396,8 @@ export default function DeveloperWorldCanvas() {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-full min-h-[380px] lg:min-h-[480px] flex items-center justify-center cursor-grab active:cursor-grabbing"
-      aria-label="Interactive 3D Developer World Core"
+      className="relative w-full h-[420px] sm:h-[480px] lg:h-[540px] flex items-center justify-center pointer-events-auto cursor-grab active:cursor-grabbing"
+      aria-label="Interactive 3D Cyber Developer Avatar"
     />
   );
 }
