@@ -60,12 +60,12 @@ export default function ExperienceSection() {
         </div>
 
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
-          Engineering <span className="text-gradient-primary">Journey & Impact</span>
+          Milestones & <span className="text-gradient-primary">Engineering Journey</span>
         </h2>
 
         <p className="max-w-2xl text-muted-foreground text-base sm:text-lg leading-relaxed">
-          High-pressure competitive hackathons, independent full-stack product
-          deployments, and structured discipline in modern software engineering.
+          Competitive national hackathons, production full-stack deployments,
+          and continuous algorithmic discipline.
         </p>
       </div>
 

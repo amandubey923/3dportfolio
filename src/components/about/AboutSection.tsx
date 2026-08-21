@@ -94,11 +94,11 @@ export default function AboutSection() {
                 </div>
                 <div className="flex items-center justify-between text-xs">
                   <span className="text-muted-foreground font-medium">Specialization:</span>
-                  <span className="font-bold text-primary">Full-Stack & AI Systems</span>
+                  <span className="font-bold text-primary">Full-Stack & Next.js Systems</span>
                 </div>
                 <div className="flex items-center justify-between text-xs">
-                  <span className="text-muted-foreground font-medium">Cognitive Pursuit:</span>
-                  <span className="font-medium text-foreground">German Language & DSA</span>
+                  <span className="text-muted-foreground font-medium">Core Focus:</span>
+                  <span className="font-medium text-foreground">Clean Architecture & DSA</span>
                 </div>
               </div>
             </div>

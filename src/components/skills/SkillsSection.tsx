@@ -48,13 +48,13 @@ export default function SkillsSection() {
 
   const getSkillBadgeClass = (name: string) => {
     const n = name.toLowerCase();
-    if (n.includes("react")) return "badge-tech-react";
-    if (n.includes("node") || n.includes("express")) return "badge-tech-node";
+    if (n.includes("react") || n.includes("tailwind") || n.includes("netlify") || n.includes("render") || n.includes("railway")) return "badge-tech-react";
+    if (n.includes("node") || n.includes("express") || n.includes("git")) return "badge-tech-node";
     if (n.includes("type") || n.includes("c++") || n.includes("javascript")) return "badge-tech-ts";
-    if (n.includes("next")) return "badge-tech-next";
-    if (n.includes("mongo") || n.includes("sql") || n.includes("database")) return "badge-tech-mongo";
-    if (n.includes("three") || n.includes("webgl") || n.includes("framer")) return "badge-tech-three";
-    if (n.includes("ai") || n.includes("cloud") || n.includes("aws")) return "badge-tech-ai";
+    if (n.includes("next") || n.includes("vercel") || n.includes("vs code")) return "badge-tech-next";
+    if (n.includes("mongo") || n.includes("postgres") || n.includes("firebase") || n.includes("convex") || n.includes("neon") || n.includes("prisma") || n.includes("sql")) return "badge-tech-mongo";
+    if (n.includes("gemini") || n.includes("vapi") || n.includes("ai") || n.includes("code-rabbit")) return "badge-tech-ai";
+    if (n.includes("structures") || n.includes("algorithms") || n.includes("oop") || n.includes("operating") || n.includes("clerk") || n.includes("web development")) return "badge-tech-three";
     return "badge-tech-default";
   };
 
