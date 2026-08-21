@@ -122,12 +122,12 @@ export default function AboutSection() {
             <p className="text-foreground/85 leading-relaxed text-sm sm:text-base">
               My engineering approach is built around discipline, architectural patience,
               and long-term software maintainability. Rather than taking hasty shortcuts,
-              I emphasize deep fundamentals, clean code decoupling, and building systems
-              that stay resilient as traffic scales.
+              I emphasize solid fundamentals, clean modular code, and building web applications
+              that are reliable, accessible, and easy to maintain.
             </p>
             <p className="text-foreground/85 leading-relaxed text-sm sm:text-base">
-              I view software as an interactive ecosystem intertwined with human psychology,
-              clean typography, and dependable server-side pipelines.
+              I view software as a complete craft connecting thoughtful design, clean typography,
+              and dependable full-stack server architecture.
             </p>
           </div>
 
@@ -139,10 +139,10 @@ export default function AboutSection() {
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <h4 className="font-bold text-sm text-foreground">
-                Discipline & Stamina
+                Discipline & Consistency
               </h4>
-              <p className="text-xs text-muted-foreground leading-relaxed">
-                Tested in national hackathons (SIH Finalist) and 250+ unbroken days of algorithmic problem solving.
+              <p className="text-xs text-foreground/65 leading-relaxed">
+                Demonstrated in Smart India Hackathon teamwork and 250+ unbroken days of algorithmic problem solving.
               </p>
             </div>
 
@@ -154,8 +154,8 @@ export default function AboutSection() {
               <h4 className="font-bold text-sm text-foreground">
                 Clean Architecture
               </h4>
-              <p className="text-xs text-muted-foreground leading-relaxed">
-                Component-driven UI, stream processors, robust database schemas, and modular RESTful APIs.
+              <p className="text-xs text-foreground/65 leading-relaxed">
+                Component-driven UI, type-safe data validation, robust database schemas, and modular RESTful APIs.
               </p>
             </div>
 
@@ -167,7 +167,7 @@ export default function AboutSection() {
               <h4 className="font-bold text-sm text-foreground">
                 Global Perspective
               </h4>
-              <p className="text-xs text-muted-foreground leading-relaxed">
+              <p className="text-xs text-foreground/65 leading-relaxed">
                 Learning German to deepen linguistic structure, precision logic, and international engineering agility.
               </p>
             </div>

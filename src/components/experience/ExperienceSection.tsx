@@ -63,9 +63,9 @@ export default function ExperienceSection() {
           Milestones & <span className="text-gradient-primary">Engineering Journey</span>
         </h2>
 
-        <p className="max-w-2xl text-muted-foreground text-base sm:text-lg leading-relaxed">
-          Competitive national hackathons, production full-stack deployments,
-          and continuous algorithmic discipline.
+        <p className="max-w-2xl text-foreground/75 text-base sm:text-lg leading-relaxed">
+          Hackathon participation, full-stack web application deployments,
+          and continuous algorithmic problem-solving discipline.
         </p>
       </div>
 
@@ -97,7 +97,7 @@ export default function ExperienceSection() {
                 <div className="w-full sm:w-1/2 sm:px-8">
                   <div className={`p-6 sm:p-7 rounded-3xl backdrop-blur-2xl transition-all duration-300 group hover:scale-[1.02] shadow-xl ${getCardStyle(item.type)}`}>
                     {/* Top Metadata */}
-                    <div className="flex flex-wrap items-center justify-between gap-2 pb-3 mb-3 border-b border-white/10">
+                    <div className="flex flex-wrap items-center justify-between gap-2 pb-3 mb-3 border-b border-foreground/10">
                       <div className="flex items-center gap-2 text-xs font-mono text-primary font-bold">
                         <Calendar className="w-3.5 h-3.5" />
                         <span>{item.period}</span>

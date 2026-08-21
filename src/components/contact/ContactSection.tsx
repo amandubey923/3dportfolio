@@ -278,8 +278,8 @@ export default function ContactSection() {
               <h3 className="text-xl sm:text-2xl font-extrabold text-foreground">
                 Dispatch Message
               </h3>
-              <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">
-                Delivered directly to Aman&apos;s verified inbox.
+              <p className="text-xs sm:text-sm text-foreground/60 mt-0.5">
+                Send a direct message or inquiry to Aman.
               </p>
             </div>
 

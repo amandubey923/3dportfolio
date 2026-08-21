@@ -21,28 +21,26 @@ const SKILL_PROJECT_MAP: Record<string, string> = {
   "React.js": "Reader's HUB, Dentiva AI, AI Fitness Platform",
   "Next.js": "Reader's HUB, Transaction-Validator, Productify SaaS",
   "TypeScript": "Reader's HUB, Transaction-Validator, 3D Portfolio",
-  "JavaScript": "All 10 Projects, LeetCode DSA",
+  "JavaScript": "Full-Stack Web Applications, LeetCode DSA",
   "C++": "LeetCode 250+ Streak, Algorithmic Problem Solving",
+  "HTML5 & CSS3": "Responsive Layouts across all projects",
   "Node.js": "Productify SaaS, AI Image Studio, Reader's HUB",
   "Express.js": "Productify SaaS, AI Image Studio, Book Store App",
+  "WebSockets": "Video Calling Interview Platform",
   "Tailwind CSS": "Reader's HUB, Transaction-Validator, Dentiva AI",
   "MongoDB": "Productify SaaS, Book Store App",
-  "PostgreSQL": "Full-Stack Relational Applications",
-  "Firebase": "Authentication & Realtime Cloud Services",
-  "Convex": "Reader's HUB Realtime Data Sync",
-  "Neon (SQL)": "Serverless Postgres Deployments",
-  "Gemini AI": "AI Fitness Platform, Portfolio Chatbot",
-  "Vapi AI": "Dentiva AI Voice Assistant Engine",
-  "Prisma ORM": "Type-Safe Database Schema Client",
-  "Clerk Auth": "Secured Identity & User Management",
+  "PostgreSQL": "Relational Data Modeling Projects",
+  "Gemini API": "AI Fitness Platform, Portfolio Chatbot",
+  "WebRTC": "Video Calling Interview Platform",
   "Git": "Version Control across all repositories",
-  "GitHub": "Collaboration & 10+ Public Projects",
+  "GitHub": "Collaboration & Public Repositories",
+  "VS Code": "Primary Development IDE",
+  "Postman": "REST API Testing & Verification",
   "Vercel": "Reader's HUB, Transaction-Validator, Productify",
   "Netlify": "Dentiva AI, AI Fitness, Video Interview",
   "Data Structures & Algorithms": "250+ Days Streak, 500+ Problems Solved",
-  "OOP": "Clean Architecture & Design Patterns",
-  "Operating Systems": "Process Concurrency & Memory Management",
-  "Web Development": "10+ Production Deployments & Responsive UI",
+  "Object-Oriented Programming (OOP)": "Clean Modular Architecture",
+  "Database Management Systems (DBMS)": "Relational SQL & Document Modeling",
 };
 
 export default function SkillsSection() {
@@ -129,7 +127,7 @@ export default function SkillsSection() {
         </h2>
 
         <p className="max-w-2xl text-muted-foreground text-base sm:text-lg leading-relaxed">
-          Production-proven technologies and frameworks grounded in real application codebases. Hover any skill chip to inspect where it is deployed.
+          Technologies and tools I use across my projects. Hover any skill chip to inspect where it is deployed.
         </p>
       </div>
 

@@ -61,7 +61,7 @@ export default function TerminalSnippet() {
             <span className="text-secondary font-bold">🛠 Stack:</span> Next.js · TypeScript · React · Node.js · AI
           </p>
           <p>
-            <span className="text-amber-500 font-bold">🏆 Streak:</span> 250+ Days LeetCode DSA · SIH Finalist
+            <span className="text-amber-500 font-bold">🏆 Streak:</span> 250+ Days LeetCode DSA · Full-Stack Builder
           </p>
         </div>
       </div>

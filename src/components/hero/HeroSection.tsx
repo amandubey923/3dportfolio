@@ -67,8 +67,8 @@ export default function HeroSection() {
 
             {/* Concise Value Statement */}
             <p className="max-w-xl text-base sm:text-lg text-foreground/80 leading-relaxed font-normal">
-              Architecting scalable cloud systems, intelligent AI platforms,
-              and high-performance web applications with clean code and system-level discipline.
+              Building responsive full-stack applications, modern AI integrations,
+              and clean user interfaces with standard web technologies and reliable architecture.
             </p>
 
             {/* Primary Action Buttons with Clear Hierarchy */}
@@ -180,7 +180,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.35 }}
-          className="mt-16 pt-8 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6"
+          className="mt-16 pt-8 border-t border-foreground/10 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6"
         >
           {PERSONAL_INFO.stats.map((stat, i) => (
             <div
