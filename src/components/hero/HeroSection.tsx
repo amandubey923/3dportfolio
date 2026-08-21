@@ -157,10 +157,10 @@ export default function HeroSection() {
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-5 relative flex items-center justify-center min-h-[420px] lg:min-h-[520px] -mt-4 lg:-mt-10"
+            className="lg:col-span-5 relative flex items-center justify-center min-h-[480px] sm:min-h-[540px] lg:min-h-[620px] -mt-2 lg:-mt-6"
           >
             {/* Glowing Backdrop Ring */}
-            <div className="absolute inset-4 rounded-full bg-gradient-to-tr from-primary/20 via-secondary/15 to-transparent blur-[80px] pointer-events-none" />
+            <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/20 via-secondary/15 to-transparent blur-[90px] pointer-events-none" />
 
             {/* 3D WebGL Canvas */}
             <div className="w-full h-full relative z-10">
