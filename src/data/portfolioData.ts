@@ -56,7 +56,6 @@ export const PERSONAL_INFO = {
   headline: "Full-Stack Developer & Software Engineer",
   subheadline: "Building scalable web applications, modern responsive interfaces, and production-ready full-stack software.",
   bioShort: "Disciplined software engineer focused on building clean, scalable, and high-performance web applications with modern technologies and reliable architecture.",
-  bioDetailed: `I am an Information Technology engineer focused on solid software fundamentals, clean code architecture, and high-performance user experiences. I build full-stack web applications using React, Next.js, Node.js, Express, and MongoDB/SQL with a strong emphasis on reliability and clean UI. Beyond engineering, I actively practice algorithmic problem solving (100+ LeetCode streak) and enjoy learning new languages to sharpen problem-solving agility.`,
   bioDetailed: `I am an Information Technology engineer focused on solid software fundamentals, clean code architecture, and high-performance user experiences. I build full-stack web applications using React, Next.js, Node.js, Express, and MongoDB/SQL with a strong emphasis on reliability and clean UI. Beyond engineering, I actively practice algorithmic problem solving (250+ LeetCode streak) and enjoy learning new languages to sharpen problem-solving agility.`,
   status: "Available for Roles & Opportunities",
   statusColor: "emerald",
@@ -74,8 +73,6 @@ export const PERSONAL_INFO = {
     geeksforgeeks: "https://www.geeksforgeeks.org/profile/kumaramag0dt",
   },
   stats: [
-    { label: "Real-World Projects Built", value: "8+" },
-    { label: "LeetCode Consistency", value: "100+ Days" },
     { label: "Real-World Projects Built", value: "10+" },
     { label: "LeetCode Consistency", value: "250+ Days" },
     { label: "National Hackathons", value: "SIH Finalist" },
@@ -379,10 +376,8 @@ export const EXPERIENCES_DATA: ExperienceItem[] = [
     organization: "Independent Engineering & Production Deployments",
     period: "2023 – Present",
     type: "Development",
-    badge: "8+ Shipped Apps",
     badge: "10+ Shipped Apps",
     highlights: [
-      "Engineered and shipped 8+ production web applications including SaaS products, digital libraries, and validation engines.",
       "Engineered and shipped 10+ production web applications including SaaS products, digital libraries, and validation engines.",
       "Implemented full-lifecycle authentication, MongoDB data schemas, CSV stream parsing, and WebRTC streaming.",
       "Maintained 100% live uptime on deployments across Vercel and Netlify platforms.",
@@ -395,10 +390,8 @@ export const EXPERIENCES_DATA: ExperienceItem[] = [
     organization: "LeetCode & GeeksforGeeks",
     period: "Ongoing Discipline",
     type: "Problem Solving",
-    badge: "100+ Days Badge",
     badge: "250+ Days Badge",
     highlights: [
-      "Earned the LeetCode 100 Days Badge through consistent, unbroken daily algorithmic problem solving.",
       "Achieved 250+ consecutive days of unbroken algorithmic problem solving on LeetCode.",
       "Strengthened proficiency in arrays, trees, dynamic programming, graph traversals, and complexity optimization in C++ and JavaScript.",
       "Active participant in competitive coding practice with focus on optimal time and space complexity.",
