@@ -64,8 +64,8 @@ export const PERSONAL_INFO = {
   location: "India",
   resumeUrl: "/resume/Resume2.pdf",
   avatarImage: "/images/aman.png",
-  portraitImage: "/aman/image.png",
-  heroImage: "/hero/hero2.png",
+  portraitImage: "/hero/hero3.png",
+  heroImage: "/hero/hero3.png",
   socials: {
     github: "https://github.com/amandubey923",
     linkedin: "https://www.linkedin.com/in/aman-kr-dubey",
@@ -81,6 +81,26 @@ export const PERSONAL_INFO = {
 };
 
 export const PROJECTS_DATA: Project[] = [
+  {
+    id: "readers-hub",
+    title: "Reader's HUB",
+    tagline: "Next-Gen Digital Library & Reading Ecosystem Platform",
+    description: "A comprehensive modern digital library platform engineered for discovering, exploring, reviewing, and managing world literature with high-performance responsive UI and theme customization.",
+    longDescription: "Reader's HUB is an advanced digital reading ecosystem and library platform. Built with modern web architecture, it provides fast client-side book discovery, literary catalog searches, interactive reading customizers, dynamic theme switching, and comprehensive review management.",
+    image: "/projects/readershub.png",
+    category: "Full Stack",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "React.js", "Node.js / Convex", "Theme Engine"],
+    features: [
+      "Advanced real-time library catalog indexing and instant title/author search",
+      "Interactive multi-theme visual selector with instant live preview and persistence",
+      "Dynamic book review curation, rating workflows, and user collection management",
+      "Ultra-fast, accessible editorial user experience across all screen sizes",
+    ],
+    liveUrl: "https://reader-hub-library.vercel.app/",
+    githubUrl: "https://github.com/amandubey923/ReadersHUB-A-Digital-Library-Platform",
+    featured: true,
+    metrics: "#1 Featured Platform",
+  },
   {
     id: "transaction-validator",
     title: "Transaction-Validator",

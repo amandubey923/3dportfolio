@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, FileText, Palette, Sun, Moon, ArrowRight, Github, Linkedin, Mail } from "lucide-react";
 import { PERSONAL_INFO } from "@/data/portfolioData";
 import { useTheme } from "@/context/ThemeContext";
+import ADLogo from "@/components/ui/ADLogo";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -45,14 +46,9 @@ export default function MobileMenu({
             className="absolute top-0 right-0 bottom-0 w-4/5 max-w-sm bg-card/95 border-l border-white/[0.08] backdrop-blur-2xl p-6 flex flex-col justify-between shadow-2xl overflow-y-auto"
           >
             <div>
-              {/* Header */}
+              {/* Header with AD Monogram */}
               <div className="flex items-center justify-between pb-5 border-b border-white/[0.06]">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-emerald-400/80 animate-pulse" />
-                  <span className="text-xs font-mono font-semibold text-primary uppercase tracking-wider">
-                    {PERSONAL_INFO.name}
-                  </span>
-                </div>
+                <ADLogo size="xs" showWordmark={true} />
                 <button
                   onClick={onClose}
                   className="p-1.5 rounded-xl border border-white/[0.06] text-muted-foreground hover:text-foreground"

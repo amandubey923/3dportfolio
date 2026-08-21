@@ -5,6 +5,8 @@ import Image from "next/image";
 import { ArrowUp, Github, Linkedin, Code, Mail, Sparkles } from "lucide-react";
 import { PERSONAL_INFO } from "@/data/portfolioData";
 
+import ADLogo from "@/components/ui/ADLogo";
+
 export default function Footer() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -17,22 +19,9 @@ export default function Footer() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          {/* Brand & Mission */}
+          {/* Brand & Mission with AD Monogram */}
           <div className="flex flex-col items-center md:items-start gap-2 text-center md:text-left">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-xl overflow-hidden border border-primary/40 p-0.5 shadow-[0_0_10px_var(--glow-primary)]">
-                <Image
-                  src={PERSONAL_INFO.avatarImage}
-                  alt={PERSONAL_INFO.name}
-                  width={32}
-                  height={32}
-                  className="rounded-[8px] object-cover"
-                />
-              </div>
-              <span className="font-extrabold text-base tracking-tight text-foreground">
-                {PERSONAL_INFO.name}
-              </span>
-            </div>
+            <ADLogo size="sm" showWordmark={true} />
             <p className="text-xs text-muted-foreground max-w-sm">
               Designing scalable systems, intuitive interfaces, and AI platforms with clarity and long-term engineering impact.
             </p>
@@ -88,7 +77,7 @@ export default function Footer() {
 
         {/* Bottom Legal & Build Info */}
         <div className="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
-          <span>
+          <span suppressHydrationWarning>
             © {new Date().getFullYear()} {PERSONAL_INFO.name}. All verified credentials & projects preserved.
           </span>
           <span className="flex items-center gap-1.5 font-mono text-[11px] text-primary">

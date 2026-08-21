@@ -12,7 +12,8 @@ import {
 } from "lucide-react";
 import { PERSONAL_INFO } from "@/data/portfolioData";
 import { useTheme } from "@/context/ThemeContext";
-import ThemeModal from "./ThemeModal";
+import ADLogo from "@/components/ui/ADLogo";
+import ThemeDropdown from "./ThemeDropdown";
 import CommandMenu from "./CommandMenu";
 import MobileMenu from "./MobileMenu";
 
@@ -28,7 +29,7 @@ const NAV_ITEMS = [
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
-  const [isThemeModalOpen, setIsThemeModalOpen] = useState(false);
+  const [isThemeDropdownOpen, setIsThemeDropdownOpen] = useState(false);
   const [isCommandMenuOpen, setIsCommandMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -73,38 +74,20 @@ export default function Navbar() {
           <nav
             className={`flex items-center justify-between px-4 sm:px-5 py-2 rounded-2xl transition-all duration-300 ${
               isScrolled
-                ? "bg-card/80 backdrop-blur-xl border border-white/[0.08] shadow-[0_4px_24px_rgba(0,0,0,0.25)]"
-                : "bg-card/40 backdrop-blur-md border border-white/[0.04]"
+                ? "bg-card/85 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.35)]"
+                : "bg-card/45 backdrop-blur-md border border-white/5"
             }`}
           >
-            {/* Left: Brand Identity */}
+            {/* Left: Brand Identity with AD Monogram */}
             <a
               href="#hero"
-              className="flex items-center gap-2.5 group focus:outline-none"
+              className="focus:outline-none"
             >
-              <div className="relative w-8 h-8 rounded-xl overflow-hidden border border-primary/30 p-0.5 group-hover:border-primary/60 transition">
-                <Image
-                  src={PERSONAL_INFO.avatarImage}
-                  alt={PERSONAL_INFO.name}
-                  width={32}
-                  height={32}
-                  priority
-                  className="rounded-[8px] object-cover"
-                />
-              </div>
-              <div className="flex flex-col">
-                <span className="font-semibold text-xs sm:text-sm tracking-tight text-foreground group-hover:text-primary transition">
-                  {PERSONAL_INFO.name}
-                </span>
-                <span className="text-[10px] font-mono text-muted-foreground flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400/80 animate-pulse" />
-                  Available
-                </span>
-              </div>
+              <ADLogo size="sm" showWordmark={true} />
             </a>
 
             {/* Middle: Desktop Navigation Links */}
-            <div className="hidden lg:flex items-center gap-1 p-1 rounded-xl bg-muted/40 border border-white/[0.04]">
+            <div className="hidden lg:flex items-center gap-1 p-1 rounded-xl bg-background/50 border border-white/5">
               {NAV_ITEMS.map((item) => {
                 const sectionId = item.href.replace("#", "");
                 const isActive = activeSection === sectionId;
@@ -112,9 +95,9 @@ export default function Navbar() {
                   <a
                     key={item.label}
                     href={item.href}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-150 ${
+                    className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all duration-150 ${
                       isActive
-                        ? "bg-primary/15 text-primary font-semibold shadow-[0_0_12px_var(--glow-primary)]"
+                        ? "btn-primary-gradient shadow-[0_0_15px_var(--glow-primary)]"
                         : "text-muted-foreground hover:text-foreground hover:bg-white/[0.04]"
                     }`}
                   >
@@ -124,62 +107,77 @@ export default function Navbar() {
               })}
             </div>
 
-            {/* Right: Actions */}
-            <div className="flex items-center gap-2">
-              {/* Command Palette Trigger */}
+            {/* Right: Controls & Actions (Quick Jump | 🎨 Theme | ☀/☾ | Resume) */}
+            <div className="flex items-center gap-2 relative">
+              {/* 1. Quick Jump / Command Menu */}
               <button
                 onClick={() => setIsCommandMenuOpen(true)}
                 title="Search & Quick Actions (Cmd+K)"
-                className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border border-white/[0.07] bg-white/[0.02] text-muted-foreground hover:text-foreground hover:border-primary/40 text-xs font-medium transition"
+                className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border border-white/10 bg-white/[0.03] text-muted-foreground hover:text-foreground hover:border-primary/40 text-xs font-medium transition"
               >
                 <Command className="w-3.5 h-3.5 text-primary" />
                 <span className="hidden md:inline text-muted-foreground text-xs">Jump</span>
-                <kbd className="text-[9px] font-mono px-1 py-0.5 rounded bg-muted/80 text-muted-foreground border border-white/[0.06]">
+                <kbd className="text-[9px] font-mono px-1 py-0.5 rounded bg-muted/80 text-muted-foreground border border-white/10">
                   ⌘K
                 </kbd>
               </button>
 
-              {/* Theme Selector Modal Trigger */}
-              <button
-                onClick={() => setIsThemeModalOpen(true)}
-                title="Select Visual Mode"
-                className="relative p-2 rounded-xl border border-white/[0.07] bg-white/[0.02] text-muted-foreground hover:text-primary hover:border-primary/40 transition group"
-              >
-                <Palette className="w-4 h-4" />
-                <span
-                  className="absolute top-1 right-1 w-2 h-2 rounded-full border border-card"
-                  style={{ backgroundColor: currentTheme.previewColor }}
-                />
-              </button>
+              {/* 2. 🎨 Theme Switcher Dropdown Anchor */}
+              <div className="relative">
+                <button
+                  onClick={() => setIsThemeDropdownOpen((prev) => !prev)}
+                  title="Change Color Theme"
+                  className={`relative flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border transition group hover:scale-105 active:scale-95 ${
+                    isThemeDropdownOpen
+                      ? "border-primary bg-primary/20 text-primary shadow-[0_0_15px_var(--glow-primary)]"
+                      : "border-white/10 bg-white/[0.03] text-muted-foreground hover:border-primary/50 hover:text-primary"
+                  }`}
+                >
+                  <Palette className="w-3.5 h-3.5 transition-transform group-hover:rotate-12" />
+                  <span className="hidden sm:inline text-xs font-semibold">Theme</span>
+                  <span
+                    className="w-2.5 h-2.5 rounded-full border border-white/20 shadow-sm"
+                    style={{
+                      background: `linear-gradient(135deg, ${currentTheme.previewColor} 0%, ${currentTheme.secondaryPreview} 100%)`,
+                    }}
+                  />
+                </button>
 
-              {/* Dark/Light Fast Toggle */}
+                {/* Compact Dropdown Popover */}
+                <ThemeDropdown
+                  isOpen={isThemeDropdownOpen}
+                  onClose={() => setIsThemeDropdownOpen(false)}
+                />
+              </div>
+
+              {/* 3. ☀/☾ Light/Dark Fast Toggle */}
               <button
                 onClick={toggleDarkLight}
                 title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
-                className="p-2 rounded-xl border border-white/[0.07] bg-white/[0.02] text-muted-foreground hover:text-foreground hover:border-primary/40 transition"
+                className="p-2 rounded-xl border border-white/10 bg-white/[0.03] text-muted-foreground hover:text-foreground hover:border-primary/40 hover:scale-105 active:scale-95 transition"
               >
                 {isDark ? (
-                  <Sun className="w-4 h-4 text-amber-400/90" />
+                  <Sun className="w-3.5 h-3.5 text-amber-400" />
                 ) : (
-                  <Moon className="w-4 h-4 text-indigo-400/90" />
+                  <Moon className="w-3.5 h-3.5 text-indigo-400" />
                 )}
               </button>
 
-              {/* Resume CTA (Desktop) */}
+              {/* 4. Resume CTA */}
               <a
                 href={PERSONAL_INFO.resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-primary/15 border border-primary/30 text-primary font-semibold text-xs hover:bg-primary/25 hover:border-primary/50 transition active:scale-95"
+                className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-primary/15 border border-primary/30 text-primary font-bold text-xs hover:bg-primary hover:text-primary-foreground shadow-[0_0_15px_var(--glow-primary)] transition active:scale-95"
               >
                 <FileText className="w-3.5 h-3.5" />
                 <span>Resume</span>
               </a>
 
-              {/* Mobile Burger Toggle */}
+              {/* Mobile Menu Hamburger */}
               <button
                 onClick={() => setIsMobileMenuOpen(true)}
-                className="lg:hidden p-2 rounded-xl border border-white/[0.07] bg-white/[0.02] text-foreground"
+                className="lg:hidden p-2 rounded-xl border border-white/10 bg-white/[0.03] text-foreground"
                 aria-label="Open Navigation Menu"
               >
                 <Menu className="w-5 h-5" />
@@ -189,24 +187,18 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Theme Modal */}
-      <ThemeModal
-        isOpen={isThemeModalOpen}
-        onClose={() => setIsThemeModalOpen(false)}
-      />
-
       {/* Command Palette */}
       <CommandMenu
         isOpen={isCommandMenuOpen}
         onClose={() => setIsCommandMenuOpen(false)}
-        onOpenThemeModal={() => setIsThemeModalOpen(true)}
+        onOpenThemeModal={() => setIsThemeDropdownOpen(true)}
       />
 
       {/* Mobile Drawer */}
       <MobileMenu
         isOpen={isMobileMenuOpen}
         onClose={() => setIsMobileMenuOpen(false)}
-        onOpenThemeModal={() => setIsThemeModalOpen(true)}
+        onOpenThemeModal={() => setIsThemeDropdownOpen(true)}
         navItems={NAV_ITEMS}
         activeSection={activeSection}
       />

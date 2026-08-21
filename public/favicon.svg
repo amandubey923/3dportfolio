@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#07090f" />
+      <stop offset="100%" stop-color="#0c101d" />
+    </linearGradient>
+    <linearGradient id="adGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f0ff" />
+      <stop offset="50%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#00f0ff" stop-opacity="0.5" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background rounded rect with dual border -->
+  <rect width="100" height="100" rx="24" fill="url(#bgGrad)" stroke="#00f0ff" stroke-width="2.5" stroke-opacity="0.6"/>
+
+  <!-- AD Monogram Silhouette with Crisp Definition -->
+  <path d="M 48 14 C 49.5 14, 51.5 15, 53 17 L 58 24 C 74 24, 86 35, 86 52 C 86 69, 73 80, 56 80 L 44 80 L 38 80 L 16 80 L 28 58 L 38 58 L 46 43 L 48 14 Z" fill="url(#adGrad)" stroke="rgba(255, 255, 255, 0.3)" stroke-width="1.2" fill-rule="evenodd" />
+
+  <!-- A Diagonal Highlight -->
+  <path d="M 26 72 L 44 38 L 48 24 L 41 38 L 23 72 Z" fill="url(#accentGrad)" opacity="0.9" />
+
+  <!-- D Internal Negative Space -->
+  <path d="M 52 34 C 67 34, 74 42, 74 52 C 74 62, 67 70, 52 70 L 52 34 Z" fill="#07090f" stroke="rgba(255, 255, 255, 0.2)" stroke-width="0.8" />
+
+  <!-- A Internal Negative Space -->
+  <path d="M 44 48 L 52 64 L 36 64 Z" fill="#07090f" stroke="rgba(255, 255, 255, 0.2)" stroke-width="0.8" />
+
+  <!-- Apex Precision Dot -->
+  <circle cx="48" cy="16" r="3.5" fill="#ffffff" />
+
+  <!-- Connecting Crossbar -->
+  <line x1="36" y1="64" x2="52" y2="64" stroke="url(#adGrad)" stroke-width="3.5" stroke-linecap="round" />
+</svg>

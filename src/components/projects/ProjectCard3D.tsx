@@ -89,11 +89,17 @@ export default function ProjectCard3D({ project, onInspect }: ProjectCard3DProps
           />
           <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-black/30" />
 
-          {/* Top Category Badge */}
+          {/* Top Category & Featured Badges */}
           <div className="absolute top-3.5 left-3.5 flex items-center gap-2">
             <span className={`px-3 py-1 rounded-full border text-[11px] font-mono font-bold uppercase tracking-wider backdrop-blur-md shadow-md ${theme.tagClass}`}>
               {project.category}
             </span>
+            {project.id === "readers-hub" && (
+              <span className="px-2.5 py-1 rounded-full border border-amber-400/40 bg-amber-400/20 text-amber-300 text-[10px] font-mono font-bold uppercase tracking-wider backdrop-blur-md shadow-[0_0_15px_rgba(251,191,36,0.35)] flex items-center gap-1">
+                <Sparkles className="w-3 h-3 text-amber-300 animate-pulse" />
+                #1 Featured
+              </span>
+            )}
           </div>
 
           {/* Inspect Button Icon */}
