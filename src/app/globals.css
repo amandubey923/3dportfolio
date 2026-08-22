@@ -29,6 +29,19 @@
   --orb-3: rgba(139, 92, 246, 0.1);
 }
 
+/* =========================================================================
+   GLOBAL CURSOR SYSTEM - HIDE DEFAULT BROWSER ARROW ON DESKTOP
+   ========================================================================= */
+@media (pointer: fine) and (hover: hover) {
+  html,
+  body,
+  *,
+  *::before,
+  *::after {
+    cursor: none !important;
+  }
+}
+
 html {
   scroll-behavior: smooth;
   color-scheme: dark;
