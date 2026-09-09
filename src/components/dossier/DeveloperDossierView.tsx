@@ -165,7 +165,7 @@ export default function DeveloperDossierView() {
                 <span className="opacity-30 hidden sm:inline">•</span>
 
                 <Link
-                  href="https://aman-portfolio-next.netlify.app"
+                  href="https://aman923-portfolio.vercel.app"
                   className="flex items-center gap-1.5 hover:text-primary transition font-medium"
                   title="Portfolio Home"
                 >

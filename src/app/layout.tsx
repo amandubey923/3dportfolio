@@ -15,7 +15,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://aman-portfolio-next.netlify.app"),
+  metadataBase: new URL("https://aman923-portfolio.vercel.app"),
   title: `${PERSONAL_INFO.name} | ${PERSONAL_INFO.headline}`,
   description: `${PERSONAL_INFO.bioShort} Explore projects, technical skills, verified certifications, and interactive 3D developer universe.`,
   keywords: [
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${PERSONAL_INFO.name} — Full-Stack Developer & Software Engineer`,
     description: PERSONAL_INFO.bioShort,
-    url: "https://aman-portfolio-next.netlify.app/",
+    url: "https://aman923-portfolio.vercel.app/",
     siteName: `${PERSONAL_INFO.name} Portfolio`,
     images: [
       {
