@@ -156,7 +156,7 @@ export const PROJECTS_DATA: Project[] = [
       "Interactive day-by-day exercise progression logging",
       "Sleek dark-mode wellness visual dashboard",
     ],
-    liveUrl: "https://ai-fitness-aman.netlify.app",
+    liveUrl: "https://fit-pilot-ai.vercel.app",
     githubUrl: "https://github.com/amandubey923/ai-fitness",
     featured: true,
     metrics: "Dynamic AI Plans",
