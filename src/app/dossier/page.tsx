@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `Developer Dossier | ${PERSONAL_INFO.name}`,
     description: `Official Developer Dossier and technical resume profile of ${PERSONAL_INFO.name} (${PERSONAL_INFO.headline}).`,
-    url: "https://aman-portfolio-next.netlify.app/dossier",
+    url: "https://aman923-portfolio.vercel.app/dossier",
     images: [{ url: "/hero/hero3.png", width: 800, height: 800, alt: PERSONAL_INFO.name }],
   },
 };
