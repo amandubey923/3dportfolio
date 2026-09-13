@@ -127,7 +127,7 @@ export const PROJECTS_DATA: Project[] = [
     tagline: "CSV Transaction Validation & Anomaly Detection Tool",
     description: "Upload transaction CSV datasets, validate records against financial rules, detect corrupt entries, identify anomalies, and export clean processed data.",
     longDescription: "A financial data utility platform designed to ingest CSV transaction datasets, execute rule-based schema validations, detect anomalies, and export cleaned datasets in standardized formats.",
-    image: "/projects/transaction-validator-preview.jpg",
+    image: "/projects/transaction_validator_thumbnail_1789323633722.jpg",
     category: "Full Stack",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "CSV Stream Parser", "Data Validation Engine"],
     features: [
@@ -167,7 +167,7 @@ export const PROJECTS_DATA: Project[] = [
     tagline: "Real-Time Peer-to-Peer Video & Technical Interview Workspace",
     description: "A real-time WebRTC video calling platform tailored for remote technical interviews with peer-to-peer audio/video connections and Socket.io signaling.",
     longDescription: "Engineered to facilitate remote technical interviews, this platform connects candidates and interviewers with direct WebRTC peer streams coordinated through Socket.io signaling.",
-    image: "/projects/video-interview-preview.jpg",
+    image: "/projects/video_interview_thumbnail_1789323688762.jpg",
     category: "Full Stack",
     technologies: ["React.js", "WebRTC", "Socket.io", "Node.js", "Tailwind CSS"],
     features: [
