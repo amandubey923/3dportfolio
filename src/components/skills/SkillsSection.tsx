@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Code2,
@@ -62,9 +62,9 @@ export default function SkillsSection() {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
 
-  const categories = ["All", ...SKILL_CATEGORIES.map((c) => c.title)];
+  const categories = useMemo(() => ["All", ...SKILL_CATEGORIES.map((c) => c.title)], []);
 
-  const getFilteredCategories = () => {
+  const filteredCategories = useMemo(() => {
     return SKILL_CATEGORIES.map((category) => {
       const filteredSkills = category.skills.filter(
         (s) =>
@@ -81,9 +81,7 @@ export default function SkillsSection() {
       }
       return category.skills.length > 0;
     });
-  };
-
-  const filteredCategories = getFilteredCategories();
+  }, [selectedCategory, searchQuery]);
 
   const getCategoryThemeClass = (index: number) => {
     const classes = ["card-ai", "card-fullstack", "card-frontend", "card-ai", "card-fullstack", "card-frontend", "card-ai"];
@@ -182,39 +180,50 @@ export default function SkillsSection() {
         </div>
       </div>
 
-      {/* Active Skill Connection Banner */}
-      {hoveredSkill && SKILL_PROJECT_MAP[hoveredSkill] && (
-        <motion.div
-          initial={{ opacity: 0, y: -6 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-6 sm:mb-8 p-3 sm:p-3.5 rounded-xl sm:rounded-2xl border border-primary/40 bg-primary/10 backdrop-blur-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs font-mono relative z-10 shadow-lg w-full min-w-0 max-w-full overflow-hidden"
-        >
-          <div className="flex items-center gap-2 flex-wrap min-w-0 w-full sm:w-auto">
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse shrink-0" />
-            <span className="text-primary font-bold shrink-0">{hoveredSkill}:</span>
-            <span className="text-foreground/90 font-sans break-words min-w-0">Applied in {SKILL_PROJECT_MAP[hoveredSkill]}</span>
-          </div>
-          <Link
-            href="/#projects"
-            className="inline-flex items-center gap-1 text-primary hover:underline font-bold text-xs shrink-0 mt-1 sm:mt-0"
-          >
-            <span>View Projects</span>
-            <ArrowUpRight className="w-3 h-3" />
-          </Link>
-        </motion.div>
-      )}
+      {/* Active Skill Connection Banner with Stable Layout */}
+      <div className="min-h-[44px] sm:min-h-[48px] mb-6 sm:mb-8 relative z-10 w-full min-w-0 max-w-full">
+        <AnimatePresence mode="wait">
+          {hoveredSkill && SKILL_PROJECT_MAP[hoveredSkill] ? (
+            <motion.div
+              key={hoveredSkill}
+              initial={{ opacity: 0, y: -3 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -3 }}
+              transition={{ duration: 0.12 }}
+              className="p-3 sm:p-3.5 rounded-xl sm:rounded-2xl border border-primary/40 bg-primary/10 backdrop-blur-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs font-mono shadow-lg w-full min-w-0 max-w-full overflow-hidden"
+            >
+              <div className="flex items-center gap-2 flex-wrap min-w-0 w-full sm:w-auto">
+                <span className="w-2 h-2 rounded-full bg-primary animate-pulse shrink-0" />
+                <span className="text-primary font-bold shrink-0">{hoveredSkill}:</span>
+                <span className="text-foreground/90 font-sans break-words min-w-0">Applied in {SKILL_PROJECT_MAP[hoveredSkill]}</span>
+              </div>
+              <Link
+                href="/#projects"
+                className="inline-flex items-center gap-1 text-primary hover:underline font-bold text-xs shrink-0 mt-1 sm:mt-0"
+              >
+                <span>View Projects</span>
+                <ArrowUpRight className="w-3 h-3" />
+              </Link>
+            </motion.div>
+          ) : (
+            <div className="hidden sm:flex items-center gap-2 text-xs font-mono text-muted-foreground/60 px-2 py-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground/40 shrink-0" />
+              <span>Hover or tap any skill to see where it is architected & deployed</span>
+            </div>
+          )}
+        </AnimatePresence>
+      </div>
 
       {/* Interactive Category Grid with Gradient Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 relative z-10 w-full min-w-0 max-w-full">
         <AnimatePresence>
           {filteredCategories.map((category, idx) => (
             <motion.div
-              layout="position"
               key={category.title}
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.25 }}
+              transition={{ duration: 0.2 }}
               style={{ maxWidth: "100%", width: "100%" }}
               className={`w-full min-w-0 max-w-full overflow-hidden p-3.5 xs:p-4 sm:p-5 lg:p-6 rounded-2xl sm:rounded-3xl backdrop-blur-2xl transition-all duration-300 group flex flex-col justify-between ${getCategoryThemeClass(idx)}`}
             >
@@ -242,7 +251,7 @@ export default function SkillsSection() {
                       onClick={() => setHoveredSkill(hoveredSkill === skill.name ? null : skill.name)}
                       onMouseEnter={() => setHoveredSkill(skill.name)}
                       onMouseLeave={() => setHoveredSkill(null)}
-                      className={`inline-flex max-w-full min-w-0 flex-wrap items-center gap-x-1.5 gap-y-0.5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl text-[11px] sm:text-xs font-semibold transition-all duration-200 hover:scale-[1.02] sm:hover:scale-105 active:scale-95 cursor-pointer break-words leading-snug ${getSkillBadgeClass(skill.name)}`}
+                      className={`inline-flex max-w-full min-w-0 flex-wrap items-center gap-x-1.5 gap-y-0.5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl text-[11px] sm:text-xs font-semibold transition-[transform,colors] duration-150 hover:scale-[1.02] sm:hover:scale-105 active:scale-95 cursor-pointer break-words leading-snug ${getSkillBadgeClass(skill.name)}`}
                     >
                       <span className="break-words min-w-0">{skill.name}</span>
                       {skill.tag && (

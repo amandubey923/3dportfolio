@@ -22,7 +22,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-[94vh] flex items-center justify-center pt-24 sm:pt-28 pb-12 sm:pb-16 overflow-hidden bg-cyber-grid w-full max-w-full"
+      className="relative min-h-[92vh] lg:min-h-0 flex items-center justify-center pt-24 sm:pt-28 lg:pt-24 pb-12 sm:pb-16 lg:pb-10 overflow-hidden bg-cyber-grid w-full max-w-full"
     >
       {/* Dynamic Ambient Multi-Color Glow Orbs */}
       <div className="ambient-orb ambient-orb-1 w-[260px] sm:w-[500px] h-[260px] sm:h-[500px] -top-24 sm:-top-32 -left-16 sm:-left-20 animate-orb-pulse pointer-events-none" />
@@ -30,13 +30,13 @@ export default function HeroSection() {
       <div className="ambient-orb ambient-orb-3 w-[220px] sm:w-[400px] h-[220px] sm:h-[400px] -bottom-24 sm:-bottom-32 left-1/3 animate-orb-pulse pointer-events-none" style={{ animationDelay: "4s" }} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full min-w-0 max-w-full relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center w-full min-w-0">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center w-full min-w-0">
           {/* ================= LEFT COLUMN: HERO CONTENT ================= */}
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-7 space-y-6 sm:space-y-7 w-full min-w-0"
+            className="lg:col-span-7 space-y-5 sm:space-y-6 lg:space-y-4 w-full min-w-0"
           >
             {/* Status Pill with Gradient Ring */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-xl shadow-[0_0_20px_var(--glow-primary)] max-w-full">
@@ -50,14 +50,14 @@ export default function HeroSection() {
             </div>
 
             {/* Main Headline with Rich Gradient */}
-            <div className="space-y-2 w-full min-w-0">
+            <div className="space-y-1.5 sm:space-y-2 w-full min-w-0">
               <div className="flex items-center gap-2 flex-wrap">
                 <span className="h-px w-6 sm:w-8 bg-gradient-to-r from-primary to-secondary shrink-0" />
                 <span className="text-[11px] xs:text-xs sm:text-sm font-mono tracking-wider sm:tracking-widest text-primary uppercase font-bold break-words">
                   Software Engineer · Full-Stack Developer
                 </span>
               </div>
-              <h1 className="text-3xl xs:text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] sm:leading-[1.05] break-words">
+              <h1 className="text-3xl xs:text-4xl sm:text-6xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] sm:leading-[1.05] break-words">
                 <span className="text-foreground">Aman </span>
                 <span className="text-gradient-hero drop-shadow-[0_0_30px_var(--glow-primary)]">
                   Dubey
@@ -66,7 +66,7 @@ export default function HeroSection() {
             </div>
 
             {/* Concise Value Statement */}
-            <p className="max-w-xl text-sm sm:text-lg text-foreground/80 leading-relaxed font-normal break-words">
+            <p className="max-w-xl text-sm sm:text-lg lg:text-base text-foreground/80 leading-relaxed font-normal break-words">
               Building responsive full-stack applications, modern AI integrations,
               and clean user interfaces with standard web technologies and reliable architecture.
             </p>
@@ -147,7 +147,7 @@ export default function HeroSection() {
             </div>
 
             {/* Live Terminal Snippet */}
-            <div className="pt-2">
+            <div className="pt-1">
               <TerminalSnippet />
             </div>
           </motion.div>
@@ -157,7 +157,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-5 relative flex items-center justify-center w-full min-w-0 max-w-full overflow-hidden min-h-[300px] xs:min-h-[360px] sm:min-h-[500px] lg:min-h-[620px] -mt-2 lg:-mt-6"
+            className="lg:col-span-5 relative flex items-center justify-center w-full min-w-0 max-w-full overflow-hidden min-h-[300px] xs:min-h-[360px] sm:min-h-[480px] lg:min-h-[480px] -mt-2 lg:-mt-4"
           >
             {/* Glowing Backdrop Ring */}
             <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/20 via-secondary/15 to-transparent blur-[90px] pointer-events-none" />
@@ -180,16 +180,16 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.35 }}
-          className="mt-10 sm:mt-16 pt-6 sm:pt-8 border-t border-foreground/10 grid grid-cols-2 md:grid-cols-4 gap-2.5 xs:gap-3 sm:gap-6 w-full min-w-0"
+          className="mt-8 sm:mt-12 lg:mt-8 pt-5 sm:pt-6 lg:pt-5 border-t border-foreground/10 grid grid-cols-2 md:grid-cols-4 gap-2.5 xs:gap-3 sm:gap-6 lg:gap-4 w-full min-w-0"
         >
           {PERSONAL_INFO.stats.map((stat, i) => (
             <div
               key={i}
-              className="p-3 xs:p-3.5 sm:p-5 rounded-xl sm:rounded-2xl glass-card-premium relative overflow-hidden group min-w-0"
+              className="p-3 xs:p-3.5 sm:p-5 lg:p-4 rounded-xl sm:rounded-2xl glass-card-premium relative overflow-hidden group min-w-0"
             >
               {/* Subtle gradient corner accent */}
               <div className="absolute top-0 right-0 w-16 sm:w-24 h-16 sm:h-24 bg-gradient-to-bl from-primary/10 to-transparent rounded-bl-full pointer-events-none" />
-              <div className="text-xl xs:text-2xl sm:text-3xl font-extrabold text-gradient-primary truncate">
+              <div className="text-xl xs:text-2xl sm:text-3xl lg:text-2xl font-extrabold text-gradient-primary truncate">
                 {stat.value}
               </div>
               <div className="text-[10px] xs:text-xs sm:text-sm text-muted-foreground mt-1 font-medium break-words leading-tight">
