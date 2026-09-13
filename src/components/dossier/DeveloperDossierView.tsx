@@ -395,7 +395,7 @@ export default function DeveloperDossierView() {
 
                 {/* Project 1: Reader's HUB */}
                 <div className="p-3.5 sm:p-4 rounded-2xl border border-amber-500/35 bg-amber-500/[0.03] space-y-2 shadow-sm">
-                  <div className="flex items-start justify-between gap-2">
+                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
                     <div>
                       <div className="flex items-center gap-1.5">
                         <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-amber-400/20 text-amber-600 dark:text-amber-300 border border-amber-400/30 uppercase">
@@ -410,7 +410,7 @@ export default function DeveloperDossierView() {
                       </p>
                     </div>
 
-                    <div className="flex items-center gap-1.5 shrink-0">
+                    <div className="flex items-center gap-1.5 shrink-0 pt-1 sm:pt-0">
                       <a
                         href="https://reader-hub-library.vercel.app/"
                         target="_blank"
@@ -422,7 +422,7 @@ export default function DeveloperDossierView() {
                         <span>Live</span>
                       </a>
                       <a
-                        href="https://github.com/amandubey923/ReadersHUB-A-Digital-Library-Platform"
+                        href="https://github.com/amandubey923/library-optimized"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg btn-secondary-glass text-[11px] font-semibold text-foreground"
@@ -437,20 +437,20 @@ export default function DeveloperDossierView() {
                   <ul className="space-y-1 text-xs sm:text-[13px] text-foreground/85 leading-relaxed">
                     <li className="flex items-start gap-1.5">
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
-                      <span>Engineered high-performance client-side catalog indexing and instant title/author search.</span>
+                      <span>Built responsive reading platform with 360+ curated books, dual-page PDF reader, and vector annotations.</span>
                     </li>
                     <li className="flex items-start gap-1.5">
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
-                      <span>Implemented interactive multi-theme customizer engine with local persistence.</span>
+                      <span>Integrated Google Gemini API for contextual page translation into Hindi and Hinglish.</span>
                     </li>
                     <li className="flex items-start gap-1.5">
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
-                      <span>Built structured user reviews curation, rating workflows, and book collection management.</span>
+                      <span>Implemented 15-minute daily reading streak system and local reading progress tracking.</span>
                     </li>
                   </ul>
 
                   <div className="flex flex-wrap gap-1 pt-0.5">
-                    {["Next.js", "TypeScript", "Tailwind CSS", "React.js", "Node.js"].map((t) => (
+                    {["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "PDF.js", "Gemini API"].map((t) => (
                       <span
                         key={t}
                         className="px-2 py-0.5 rounded border border-foreground/[0.08] bg-foreground/[0.02] text-[11px] text-foreground/75 font-medium"
@@ -463,7 +463,7 @@ export default function DeveloperDossierView() {
 
                 {/* Project 2: Dentiva AI */}
                 <div className="p-3.5 sm:p-4 rounded-2xl border border-foreground/[0.08] bg-foreground/[0.02] space-y-2 shadow-sm">
-                  <div className="flex items-start justify-between gap-2">
+                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
                     <div>
                       <h4 className="text-sm sm:text-base font-bold text-foreground">
                         Dentiva AI Dental-Health
@@ -473,7 +473,7 @@ export default function DeveloperDossierView() {
                       </p>
                     </div>
 
-                    <div className="flex items-center gap-1.5 shrink-0">
+                    <div className="flex items-center gap-1.5 shrink-0 pt-1 sm:pt-0">
                       <a
                         href="https://dentiva-ai-aman.netlify.app"
                         target="_blank"
@@ -513,7 +513,7 @@ export default function DeveloperDossierView() {
                   </ul>
 
                   <div className="flex flex-wrap gap-1 pt-0.5">
-                    {["React.js", "Voice AI", "Tailwind CSS", "REST API"].map((t) => (
+                    {["Next.js", "React.js", "TypeScript", "PostgreSQL", "Prisma ORM", "Vapi AI"].map((t) => (
                       <span
                         key={t}
                         className="px-2 py-0.5 rounded border border-foreground/[0.08] bg-foreground/[0.02] text-[11px] text-foreground/75 font-medium"

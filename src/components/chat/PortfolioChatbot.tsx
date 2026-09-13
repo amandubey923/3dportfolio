@@ -182,7 +182,7 @@ export default function PortfolioChatbot() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end pointer-events-auto">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex flex-col items-end pointer-events-auto">
       {/* Floating Chat Popover Window */}
       <AnimatePresence>
         {isOpen && (
@@ -191,7 +191,7 @@ export default function PortfolioChatbot() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: "spring", stiffness: 350, damping: 28 }}
-            className="mb-4 w-[360px] sm:w-[410px] max-w-[calc(100vw-32px)] h-[540px] max-h-[78vh] flex flex-col rounded-3xl border border-primary/30 bg-card/95 backdrop-blur-2xl shadow-[0_16px_50px_rgba(0,0,0,0.6)] overflow-hidden"
+            className="mb-3 sm:mb-4 w-[350px] sm:w-[410px] max-w-[calc(100vw-24px)] h-[480px] sm:h-[540px] max-h-[76vh] flex flex-col rounded-2xl sm:rounded-3xl border border-primary/30 bg-card/95 backdrop-blur-2xl shadow-[0_16px_50px_rgba(0,0,0,0.6)] overflow-hidden"
           >
             {/* Header */}
             <div className="px-5 py-4 bg-foreground/[0.03] border-b border-foreground/10 flex items-center justify-between">

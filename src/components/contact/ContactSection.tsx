@@ -109,7 +109,7 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden"
+      className="relative py-16 sm:py-24 lg:py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden"
     >
       {/* Toast Notifications */}
       <ToastContainer
@@ -122,7 +122,7 @@ export default function ContactSection() {
       <div className="ambient-orb ambient-orb-2 w-[400px] h-[400px] bottom-0 -left-20 animate-orb-pulse" style={{ animationDelay: "3s" }} />
 
       {/* Section Header with Editorial Index */}
-      <div className="mb-20 space-y-3 relative z-10 text-center sm:text-left">
+      <div className="mb-12 sm:mb-16 lg:mb-20 space-y-3 relative z-10 text-center sm:text-left">
         <div className="section-index-badge">
           <Terminal className="w-3.5 h-3.5" />
           <span>05 / Direct Communications</span>
@@ -138,24 +138,24 @@ export default function ContactSection() {
       </div>
 
       {/* Contact Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start relative z-10">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start relative z-10 w-full min-w-0">
         {/* Left: Direct Channel Badges & Social Vectors */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="lg:col-span-5 space-y-6"
+          className="lg:col-span-5 space-y-6 w-full min-w-0"
         >
           {/* Quick Copy Contact Card */}
-          <div className="p-6 sm:p-8 rounded-3xl glass-card-premium space-y-5 shadow-2xl">
+          <div className="p-4 sm:p-8 rounded-2xl sm:rounded-3xl glass-card-premium space-y-4 sm:space-y-5 shadow-2xl w-full min-w-0">
             <h3 className="text-lg font-bold text-foreground flex items-center gap-2.5">
-              <Mail className="w-5 h-5 text-primary" />
-              Direct Endpoints
+              <Mail className="w-5 h-5 text-primary shrink-0" />
+              <span>Direct Endpoints</span>
             </h3>
 
             {/* Email Box */}
-            <div className="p-4 rounded-2xl border border-white/10 bg-white/[0.03] flex items-center justify-between gap-3 group hover:border-primary/40 transition">
+            <div className="p-3.5 sm:p-4 rounded-2xl border border-white/10 bg-white/[0.03] flex items-center justify-between gap-3 group hover:border-primary/40 transition w-full min-w-0">
               <div className="flex flex-col min-w-0">
                 <span className="text-[11px] font-mono text-muted-foreground">
                   Primary Email
@@ -178,7 +178,7 @@ export default function ContactSection() {
             </div>
 
             {/* Phone Box */}
-            <div className="p-4 rounded-2xl border border-white/10 bg-white/[0.03] flex items-center justify-between gap-3 group hover:border-primary/40 transition">
+            <div className="p-3.5 sm:p-4 rounded-2xl border border-white/10 bg-white/[0.03] flex items-center justify-between gap-3 group hover:border-primary/40 transition w-full min-w-0">
               <div className="flex flex-col min-w-0">
                 <span className="text-[11px] font-mono text-muted-foreground">
                   Direct Telephone
@@ -201,15 +201,15 @@ export default function ContactSection() {
             </div>
 
             {/* Location Box */}
-            <div className="p-4 rounded-2xl border border-white/10 bg-white/[0.03] flex items-center gap-3">
-              <div className="p-2 rounded-xl bg-primary/10 text-primary border border-primary/20">
+            <div className="p-3.5 sm:p-4 rounded-2xl border border-white/10 bg-white/[0.03] flex items-center gap-3 w-full min-w-0">
+              <div className="p-2 rounded-xl bg-primary/10 text-primary border border-primary/20 shrink-0">
                 <MapPin className="w-4 h-4" />
               </div>
-              <div className="flex flex-col">
+              <div className="flex flex-col min-w-0">
                 <span className="text-[11px] font-mono text-muted-foreground">
                   Location & Timezone
                 </span>
-                <span className="text-xs sm:text-sm font-semibold text-foreground">
+                <span className="text-xs sm:text-sm font-semibold text-foreground break-words">
                   {PERSONAL_INFO.location} · UTC+5:30 (IST)
                 </span>
               </div>
@@ -217,11 +217,11 @@ export default function ContactSection() {
           </div>
 
           {/* Social Profiles Grid */}
-          <div className="p-6 rounded-3xl glass-card-premium space-y-3.5">
+          <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl glass-card-premium space-y-3.5 w-full min-w-0">
             <h4 className="text-xs font-mono font-bold text-muted-foreground uppercase tracking-wider">
               Developer Ecosystems
             </h4>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-2.5 sm:gap-3 w-full min-w-0">
               <a
                 href={PERSONAL_INFO.socials.github}
                 target="_blank"
@@ -271,9 +271,9 @@ export default function ContactSection() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.15 }}
-          className="lg:col-span-7"
+          className="lg:col-span-7 w-full min-w-0"
         >
-          <div className="p-6 sm:p-10 rounded-3xl glass-card-premium shadow-2xl space-y-6">
+          <div className="p-4 sm:p-10 rounded-2xl sm:rounded-3xl glass-card-premium shadow-2xl space-y-5 sm:space-y-6 w-full min-w-0">
             <div>
               <h3 className="text-xl sm:text-2xl font-extrabold text-foreground">
                 Dispatch Message

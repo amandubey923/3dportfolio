@@ -46,14 +46,14 @@ export default function ExperienceSection() {
   return (
     <section
       id="experience"
-      className="relative py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden"
+      className="relative py-16 sm:py-24 lg:py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden"
     >
       {/* Background Ambient Orbs */}
       <div className="ambient-orb ambient-orb-2 w-[400px] h-[400px] top-10 -left-20 animate-orb-pulse" />
       <div className="ambient-orb ambient-orb-1 w-[450px] h-[450px] bottom-10 -right-20 animate-orb-pulse" style={{ animationDelay: "3s" }} />
 
       {/* Section Header with Editorial Index */}
-      <div className="mb-20 space-y-3 relative z-10">
+      <div className="mb-12 sm:mb-16 lg:mb-20 space-y-3 relative z-10">
         <div className="section-index-badge">
           <Terminal className="w-3.5 h-3.5" />
           <span>04 / Milestones & Trajectory</span>
@@ -70,11 +70,11 @@ export default function ExperienceSection() {
       </div>
 
       {/* Timeline Tree */}
-      <div className="relative z-10">
+      <div className="relative z-10 w-full min-w-0">
         {/* Gradient Connecting Laser Line */}
         <div className="absolute left-4 sm:left-1/2 top-4 bottom-4 w-1 bg-gradient-to-b from-primary via-secondary to-transparent -translate-x-1/2 hidden sm:block rounded-full shadow-[0_0_15px_var(--glow-primary)]" />
 
-        <div className="space-y-10">
+        <div className="space-y-6 sm:space-y-10 w-full min-w-0">
           {EXPERIENCES_DATA.map((item, idx) => {
             const isEven = idx % 2 === 0;
             return (
@@ -84,7 +84,7 @@ export default function ExperienceSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className={`relative flex flex-col sm:flex-row items-center gap-8 ${
+                className={`relative flex flex-col sm:flex-row items-center gap-4 sm:gap-8 w-full min-w-0 ${
                   isEven ? "sm:flex-row-reverse" : ""
                 }`}
               >
@@ -94,8 +94,8 @@ export default function ExperienceSection() {
                 </div>
 
                 {/* Left/Right Card */}
-                <div className="w-full sm:w-1/2 sm:px-8">
-                  <div className={`p-6 sm:p-7 rounded-3xl backdrop-blur-2xl transition-all duration-300 group hover:scale-[1.02] shadow-xl ${getCardStyle(item.type)}`}>
+                <div className="w-full sm:w-1/2 sm:px-8 min-w-0">
+                  <div className={`p-4 sm:p-7 rounded-2xl sm:rounded-3xl backdrop-blur-2xl transition-all duration-300 group hover:scale-[1.02] shadow-xl w-full min-w-0 ${getCardStyle(item.type)}`}>
                     {/* Top Metadata */}
                     <div className="flex flex-wrap items-center justify-between gap-2 pb-3 mb-3 border-b border-foreground/10">
                       <div className="flex items-center gap-2 text-xs font-mono text-primary font-bold">
@@ -112,7 +112,7 @@ export default function ExperienceSection() {
 
                     {/* Role & Organization */}
                     <div className="space-y-1 mb-4">
-                      <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition">
+                      <h3 className="text-lg sm:text-xl font-bold text-foreground group-hover:text-primary transition">
                         {item.role}
                       </h3>
                       <p className="text-sm font-semibold text-primary/90">
