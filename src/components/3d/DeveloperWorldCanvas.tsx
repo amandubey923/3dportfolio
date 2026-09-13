@@ -763,7 +763,7 @@ export default function DeveloperWorldCanvas() {
   return (
     <div
       ref={containerRef}
-      className="relative w-full max-w-full overflow-hidden h-[300px] xs:h-[360px] sm:h-[500px] lg:h-[650px] flex items-center justify-center cursor-grab active:cursor-grabbing select-none"
+      className="relative w-full h-[340px] xs:h-[380px] sm:h-[500px] lg:h-[620px] max-w-full flex items-center justify-center cursor-grab active:cursor-grabbing select-none"
     />
   );
 }
