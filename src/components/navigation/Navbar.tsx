@@ -76,7 +76,7 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav
-            className={`flex items-center justify-between px-4 sm:px-5 py-2 rounded-2xl transition-all duration-300 ${
+            className={`flex items-center justify-between px-3 sm:px-5 py-2 rounded-2xl transition-all duration-300 ${
               isScrolled
                 ? "bg-card/85 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.35)]"
                 : "bg-card/45 backdrop-blur-md border border-white/5"
@@ -116,7 +116,7 @@ export default function Navbar() {
             </div>
 
             {/* Right: Controls & Actions (Quick Jump | 🎨 Theme | ☀/☾ | Resume) */}
-            <div className="flex items-center gap-2 relative">
+            <div className="flex items-center gap-1.5 sm:gap-2 relative">
               {/* 1. Quick Jump / Command Menu */}
               <button
                 onClick={() => setIsCommandMenuOpen(true)}
