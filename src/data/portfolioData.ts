@@ -87,7 +87,7 @@ export const PROJECTS_DATA: Project[] = [
     tagline: "Digital Library & Interactive Study Platform",
     description: "A responsive digital reading and study platform featuring 360+ curated books, an interactive PDF reader with annotations, and Gemini AI contextual translation.",
     longDescription: "Reader's HUB is a responsive digital reading and study platform featuring 360+ curated books across diverse genres with fast search, an interactive PDF reader with dual-page spread view, freehand vector annotations, local reading progress tracking, and Google Gemini API contextual page translation into Hindi and Hinglish.",
-    image: "/projects/readershub.png",
+    image: "/projects/readershub-preview.jpg",
     category: "Full Stack",
     technologies: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "PDF.js", "Google Gemini API", "Web Audio API", "LocalStorage"],
     features: [
@@ -107,7 +107,7 @@ export const PROJECTS_DATA: Project[] = [
     tagline: "AI Voice Consultation, Clinical Triage & Appointment Scheduling",
     description: "An AI-assisted dental healthcare platform featuring real-time clinical appointment scheduling, doctor selection, Vapi Voice AI consultations, and admin dashboard.",
     longDescription: "Dentiva AI is an AI-assisted dental healthcare platform featuring real-time clinical appointment scheduling, doctor selection, and patient triage. Integrated conversational Voice AI using Vapi AI SDK (@vapi-ai/web) and Gemini AI for live patient voice consultations, backed by PostgreSQL and Prisma ORM.",
-    image: "/projects/project7.png",
+    image: "/projects/dentiva-ai-preview.jpg",
     category: "AI & ML",
     technologies: ["Next.js", "React.js", "TypeScript", "Tailwind CSS", "PostgreSQL", "Prisma ORM", "Clerk Auth", "Vapi AI"],
     features: [
@@ -127,7 +127,7 @@ export const PROJECTS_DATA: Project[] = [
     tagline: "CSV Transaction Validation & Anomaly Detection Tool",
     description: "Upload transaction CSV datasets, validate records against financial rules, detect corrupt entries, identify anomalies, and export clean processed data.",
     longDescription: "A financial data utility platform designed to ingest CSV transaction datasets, execute rule-based schema validations, detect anomalies, and export cleaned datasets in standardized formats.",
-    image: "/projects/project10.png",
+    image: "/projects/transaction-validator-preview.jpg",
     category: "Full Stack",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "CSV Stream Parser", "Data Validation Engine"],
     features: [
@@ -147,7 +147,7 @@ export const PROJECTS_DATA: Project[] = [
     tagline: "Personalized Workout & Dietary Plan Generator",
     description: "Personalized fitness application that calculates user BMR/TDEE caloric targets and generates customized multi-day workout and diet plans using Gemini AI and Convex.",
     longDescription: "FitPilot AI calculates user BMR/TDEE caloric targets and generates customized multi-day workout and diet plans. Integrated Google Gemini API with structured JSON output and Groq fallback, backed by real-time Convex schemas and Clerk authentication.",
-    image: "/projects/project1.png",
+    image: "/projects/fitpilot-ai-preview.jpg",
     category: "AI & ML",
     technologies: ["Next.js", "React.js", "TypeScript", "Tailwind CSS", "Convex", "Clerk Auth", "Google Gemini API", "Resend"],
     features: [
@@ -167,7 +167,7 @@ export const PROJECTS_DATA: Project[] = [
     tagline: "Real-Time Peer-to-Peer Video & Technical Interview Workspace",
     description: "A real-time WebRTC video calling platform tailored for remote technical interviews with peer-to-peer audio/video connections and Socket.io signaling.",
     longDescription: "Engineered to facilitate remote technical interviews, this platform connects candidates and interviewers with direct WebRTC peer streams coordinated through Socket.io signaling.",
-    image: "/projects/project2.png",
+    image: "/projects/video-interview-preview.jpg",
     category: "Full Stack",
     technologies: ["React.js", "WebRTC", "Socket.io", "Node.js", "Tailwind CSS"],
     features: [

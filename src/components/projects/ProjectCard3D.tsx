@@ -88,7 +88,7 @@ export default function ProjectCard3D({ project, onInspect }: ProjectCard3DProps
         transformPerspective: 1000,
       }}
       transition={{ type: "spring", stiffness: 260, damping: 24, mass: 0.6 }}
-      className={`group relative w-full min-w-0 max-w-full rounded-2xl sm:rounded-3xl backdrop-blur-2xl overflow-hidden flex flex-col justify-between transition-all duration-300 shadow-lg sm:shadow-xl ${
+      className={`group relative w-full h-full min-w-0 max-w-full rounded-2xl sm:rounded-3xl backdrop-blur-2xl overflow-hidden flex flex-col justify-between transition-all duration-300 shadow-lg sm:shadow-xl ${
         isFeaturedReaderHub
           ? "border-amber-400/40 shadow-[0_0_35px_rgba(251,191,36,0.18)]"
           : ""
@@ -104,8 +104,8 @@ export default function ProjectCard3D({ project, onInspect }: ProjectCard3DProps
       />
 
       {/* Top Image Preview with Gradient Overlay */}
-      <div className="w-full min-w-0">
-        <div className="relative h-44 xs:h-48 sm:h-52 lg:h-56 w-full overflow-hidden border-b border-white/10 bg-black/40">
+      <div className="w-full min-w-0 flex-1 flex flex-col">
+        <div className="relative h-44 xs:h-48 sm:h-52 lg:h-56 w-full overflow-hidden border-b border-white/10 bg-black/40 shrink-0">
           <Image
             src={project.image}
             alt={project.title}
@@ -139,22 +139,24 @@ export default function ProjectCard3D({ project, onInspect }: ProjectCard3DProps
         </div>
 
         {/* Content Body */}
-        <div className="p-3.5 sm:p-5 lg:p-6 space-y-2 sm:space-y-3 w-full min-w-0">
-          <div className="w-full min-w-0">
-            <h3 className={`text-base sm:text-lg lg:text-xl font-bold transition duration-200 truncate ${theme.titleGradient}`}>
-              {project.title}
-            </h3>
-            <p className="text-[11px] sm:text-xs text-primary/90 font-mono font-semibold mt-0.5 sm:mt-1 truncate">
-              {project.tagline}
+        <div className="p-3.5 sm:p-5 lg:p-6 space-y-2 sm:space-y-3 w-full min-w-0 flex-1 flex flex-col justify-between">
+          <div className="w-full min-w-0 space-y-1 sm:space-y-1.5">
+            <div className="w-full min-w-0">
+              <h3 className={`text-base sm:text-lg lg:text-xl font-bold transition duration-200 truncate ${theme.titleGradient}`}>
+                {project.title}
+              </h3>
+              <p className="text-[11px] sm:text-xs text-primary/90 font-mono font-semibold mt-0.5 sm:mt-1 truncate">
+                {project.tagline}
+              </p>
+            </div>
+
+            <p className="text-xs sm:text-sm text-foreground/80 line-clamp-2 leading-relaxed break-words min-h-[2.5rem] sm:min-h-[2.75rem]">
+              {project.description}
             </p>
           </div>
 
-          <p className="text-xs sm:text-sm text-foreground/80 line-clamp-2 leading-relaxed break-words">
-            {project.description}
-          </p>
-
           {/* Tech Stack Badges */}
-          <div className="flex flex-wrap gap-1 sm:gap-1.5 pt-1 sm:pt-2 w-full min-w-0">
+          <div className="flex flex-wrap items-center gap-1 sm:gap-1.5 pt-1 sm:pt-2 w-full min-w-0 mt-auto min-h-[1.75rem] sm:min-h-[2rem]">
             {project.technologies.slice(0, 4).map((tech) => (
               <span
                 key={tech}
@@ -173,7 +175,7 @@ export default function ProjectCard3D({ project, onInspect }: ProjectCard3DProps
       </div>
 
       {/* Bottom Action Footer */}
-      <div className="p-3.5 sm:p-5 lg:p-6 pt-0 mt-1 flex flex-wrap items-center justify-between gap-2 border-t border-foreground/10 pt-3 sm:pt-4 w-full min-w-0">
+      <div className="px-3.5 sm:px-5 lg:px-6 py-3 sm:py-4 mt-auto flex flex-wrap items-center justify-between gap-2 border-t border-foreground/10 w-full min-w-0 shrink-0">
         {/* Primary Action: Live Demo or GitHub for Repo-only */}
         {project.liveUrl ? (
           <a

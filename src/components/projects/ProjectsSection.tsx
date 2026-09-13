@@ -107,7 +107,7 @@ export default function ProjectsSection() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.3 }}
-              className="w-full min-w-0 max-w-full"
+              className="w-full min-w-0 max-w-full h-full flex flex-col"
             >
               <ProjectCard3D
                 project={project}
