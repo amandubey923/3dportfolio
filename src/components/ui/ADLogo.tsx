@@ -133,7 +133,7 @@ export default function ADLogo({
             Aman Dubey
           </span>
           <span
-            className={`font-mono text-muted-foreground flex items-center gap-1.5 mt-0.5 ${subSize}`}
+            className={`font-mono text-muted-foreground hidden xs:flex items-center gap-1.5 mt-0.5 ${subSize}`}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
             Software Engineer
