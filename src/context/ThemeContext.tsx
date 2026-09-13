@@ -50,6 +50,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       root.style.setProperty(key, val);
     });
 
+    root.setAttribute("data-theme", currentTheme.id);
+
     if (currentTheme.isDark) {
       root.classList.add("dark");
       root.classList.remove("light");
