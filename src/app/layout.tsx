@@ -71,11 +71,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
-      <body className="relative min-h-screen bg-background text-foreground antialiased selection:bg-primary selection:text-primary-foreground">
+      <body className="relative min-h-screen bg-background text-foreground antialiased selection:bg-primary selection:text-primary-foreground w-full max-w-full overflow-x-hidden">
         <ThemeProvider>
           <CustomCursor />
           <Navbar />
-          <main className="relative z-10">{children}</main>
+          <main className="relative z-10 w-full max-w-full overflow-x-hidden">{children}</main>
           <Footer />
           <PortfolioChatbot />
         </ThemeProvider>

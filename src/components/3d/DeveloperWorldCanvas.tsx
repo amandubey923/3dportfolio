@@ -59,6 +59,7 @@ export default function DeveloperWorldCanvas() {
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1.2;
+      renderer.domElement.style.maxWidth = "100%";
       container.appendChild(renderer.domElement);
     } catch {
       setWebglSupported(false);
@@ -762,7 +763,7 @@ export default function DeveloperWorldCanvas() {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-[520px] sm:h-[580px] lg:h-[650px] flex items-center justify-center cursor-grab active:cursor-grabbing select-none"
+      className="relative w-full max-w-full overflow-hidden h-[300px] xs:h-[360px] sm:h-[500px] lg:h-[650px] flex items-center justify-center cursor-grab active:cursor-grabbing select-none"
     />
   );
 }
