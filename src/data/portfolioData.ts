@@ -62,7 +62,7 @@ export const PERSONAL_INFO = {
   email: "kumaraman19137@gmail.com",
   phone: "+91 8969230625",
   location: "Mohali, Punjab, India",
-  resumeUrl: "/resume/Aman_Dubey_Resume923.pdf",
+  resumeUrl: "/resume/AmanDubeyResume(new).pdf",
   avatarImage: "/images/aman.png",
   portraitImage: "/hero/hero3.png",
   heroImage: "/hero/hero3.png",
